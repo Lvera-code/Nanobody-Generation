@@ -1,0 +1,46 @@
+Proyecto3-BoltzGen — License
+
+Copyright (c) 2026 Enzo Sierra
+
+This repository's own original code (everything committed here, EXCLUDING
+the vendored/cloned external tools listed below) is licensed under Creative
+Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0):
+https://creativecommons.org/licenses/by-nc/4.0/
+
+This choice matches the most restrictive real dependency this project
+relies on at runtime (see below) rather than granting broader rights than
+the overall system can actually support. Non-commercial academic/research
+use is fully covered.
+
+## Why the whole system is non-commercial-only
+
+This project's own code (Fase 0) imports functions directly (via Python
+import, never copied/vendored) from two sibling repositories at runtime:
+
+- **BCell-Epitope-Prediction** (`Lvera-code/BCell-Epitope-Prediction`):
+  CC BY-NC 4.0 for its own code, itself constrained by several
+  non-commercial-only external tools it orchestrates (BepiPred-3.0,
+  DiscoTope-3.0, AlgPred2, NetMHCIIpan-4.3, NetMHCpan-4.2, ToxinPred2,
+  SignalP-6.0 — see that repo's own LICENSE for the full list). This
+  project's Fase 0 reuses several of its functions directly.
+- **PTM-Prediction** (`Lvera-code/PTM-Prediction`): CC BY-NC 4.0. This
+  project's Fase 0 reuses its UniProt REST client
+  (`src/structural/uniprot_localization_client.py`, pure stdlib, no
+  external tool dependency of its own) for the secretory-pathway and
+  quaternary-structure annotations.
+
+Separately, this project clones **BoltzGen** (`HannesStark/boltzgen`,
+MIT license) as an external reference/dependency — gitignored, never
+vendored into this repository, installed independently by whoever sets up
+this pipeline.
+
+Public REST APIs consulted at runtime (UniProt, RCSB PDB) are used only to
+read publicly available annotation data for research purposes, not
+redistributed as part of this repository.
+
+None of the above are distributed as part of this repository. This LICENSE
+file covers only the code actually committed here.
+
+**This is not formal legal advice.** If you intend to use this pipeline or
+its outputs beyond non-commercial research/academic purposes, verify the
+current license terms of each dependency above directly.

@@ -1,0 +1,14 @@
+*.pyc
+__pycache__/
+.pytest_cache/
+logs/
+
+# BoltzGen (HannesStark/boltzgen, MIT): repo clonado como referencia para
+# construir el wrapper del protocolo Scipion. Nunca debe subirse (ajeno,
+# regenerable via git clone, y sus pesos de modelo -- descargados aparte,
+# ~6GB -- nunca deben subirse tampoco).
+boltzgen/
+
+# Salida de pruebas de Fase 0 contra casos reales: regenerable, no es
+# codigo fuente ni un artefacto versionable.
+outputs/
