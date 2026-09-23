@@ -1,0 +1,16 @@
+entities:
+- file:
+    path: /data/esierra/proyecto3-boltzgen/rbd_bench/7BEP_chainE_boltzgen_target.cif
+    include:
+    - chain:
+        id: Exp
+    binding_types:
+    - chain:
+        id: Exp
+        binding: 148..163
+- file:
+    path:
+    - /data/esierra/proyecto3-boltzgen/rbd_campaign/7eow.yaml
+    - /data/esierra/proyecto3-boltzgen/rbd_campaign/7xl0.yaml
+    - /data/esierra/proyecto3-boltzgen/rbd_campaign/8coh.yaml
+    - /data/esierra/proyecto3-boltzgen/rbd_campaign/8z8v.yaml
