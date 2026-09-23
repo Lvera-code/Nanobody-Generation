@@ -1,0 +1,56 @@
+=== run_campaign.sh ===
+#!/bin/bash
+set -uo pipefail
+source /data/esierra/miniconda3/etc/profile.d/conda.sh
+conda activate boltzgen
+BASE=/data/esierra/proyecto3-boltzgen
+
+echo "=== RBD campaign start $(date) ==="
+cd "$BASE/rbd_campaign"
+boltzgen run --protocol nanobody-anything --output run1 --devices 4 --num_designs 10000 --diffusion_batch_size 1 --reuse --budget 100 design_spec.yaml
+rc=$?
+echo "=== RBD campaign done rc=$rc $(date) ==="
+
+echo "=== PfCSP campaign start $(date) ==="
+cd "$BASE/pfcsp_campaign"
+boltzgen run --protocol nanobody-anything --output run1 --devices 4 --num_designs 10000 --diffusion_batch_size 1 --reuse --budget 100 design_spec.yaml
+rc2=$?
+echo "=== PfCSP campaign done rc=$rc2 $(date) ==="
+
+=== rbd_campaign ls ===
+total 1022
+drwxrwxr-x  4 esierra esierra     13 sep 15 12:38 .
+drwxrwxr-x 11 esierra esierra     26 sep 19 12:31 ..
+-rw-r--r--  1 esierra esierra 647713 sep 15 12:37 7eow.cif
+-rw-r--r--  1 esierra esierra   1052 sep 15 12:37 7eow.yaml
+-rw-r--r--  1 esierra esierra 451294 sep 15 12:37 7xl0.cif
+-rw-r--r--  1 esierra esierra   1052 sep 15 12:37 7xl0.yaml
+-rw-r--r--  1 esierra esierra 432568 sep 15 12:37 8coh.cif
+-rw-r--r--  1 esierra esierra   1074 sep 15 12:37 8coh.yaml
+-rw-r--r--  1 esierra esierra 616743 sep 15 12:37 8z8v.cif
+-rw-r--r--  1 esierra esierra   1047 sep 15 12:37 8z8v.yaml
+drwxrwxr-x  2 esierra esierra      3 sep 15 12:38 check_out
+-rw-r--r--  1 esierra esierra    485 sep 15 12:37 design_spec.yaml
+drwxrwxr-x  6 esierra esierra      8 sep 23 19:21 run1
+
+=== rbd_campaign/run1 ls ===
+total 3230
+drwxrwxr-x 6 esierra esierra      8 sep 23 19:21 .
+drwxrwxr-x 4 esierra esierra     13 sep 15 12:38 ..
+drwxrwxr-x 2 esierra esierra      7 sep 15 12:38 config
+-rw-rw-r-- 1 esierra esierra 218945 sep 15 12:38 design_spec.cif
+drwxrwxr-x 4 esierra esierra      7 sep 23 19:21 final_ranked_designs
+drwxrwxr-x 4 esierra esierra  20004 sep 18 21:21 intermediate_designs
+drwxrwxr-x 9 esierra esierra  20012 sep 23 19:20 intermediate_designs_inverse_folded
+-rw-rw-r-- 1 esierra esierra    282 sep 15 12:38 steps.yaml
+
+=== run1/config ls ===
+/data/esierra/proyecto3-boltzgen/rbd_campaign/run1/config/:
+total 14
+drwxrwxr-x 2 esierra esierra    7 sep 15 12:38 .
+drwxrwxr-x 6 esierra esierra    8 sep 23 19:21 ..
+-rw-rw-r-- 1 esierra esierra 1773 sep 15 12:38 analysis.yaml
+-rw-rw-r-- 1 esierra esierra 2653 sep 15 12:38 design.yaml
+-rw-rw-r-- 1 esierra esierra  416 sep 15 12:38 filtering.yaml
+-rw-rw-r-- 1 esierra esierra 1751 sep 15 12:38 folding.yaml
+-rw-rw-r-- 1 esierra esierra 2461 sep 15 12:38 inverse_folding.yaml

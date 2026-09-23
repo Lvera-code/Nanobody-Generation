@@ -1,0 +1,852 @@
+====================================================================================================
+0. INVENTARIO DE FILAS
+====================================================================================================
+all_designs_metrics.csv : (9988, 200)
+aggregate_metrics       : (9990, 171)
+final_designs_100       : (100, 201)
+
+-- Los 2 duplicados eliminados (9990 -> 9988) --
+filas en aggregate con designed_chain_sequence repetida: 4
+  seq len 115 ids: ['design_spec_0495', 'design_spec_9030']
+  seq len 114 ids: ['design_spec_0558', 'design_spec_5698']
+ids en aggregate y no en all_designs: ['design_spec_5698', 'design_spec_9030']
+
+-- Disenos generados sin metricas (fold fallido) --
+faltantes: [9948, 9952, 9956, 9964, 9968, 9972, 9980, 9984, 9988, 9996]
+n faltantes: 10
+
+====================================================================================================
+1. CLASIFICACION POR SCAFFOLD (framework FR2/FR3)
+====================================================================================================
+Clasificacion por FR2 (all_designs):
+scaffold
+7eow_caplacizumab     2541
+7xl0_vobarilizumab    2533
+8z8v_ozoralizumab     2513
+8coh_gefurulimab      2401
+
+Concordancia FR2 vs FR3: 9988 / 9988
+Discordantes/NINGUNO por FR3:
+scaffold3
+7eow_caplacizumab     2541
+7xl0_vobarilizumab    2533
+8z8v_ozoralizumab     2513
+8coh_gefurulimab      2401
+
+====================================================================================================
+2. DISTRIBUCIONES GLOBALES
+====================================================================================================
+                                count        mean         std        min          1%          5%         10%         25%         50%         75%         90%         95%         99%         max
+design_to_target_iptm          9988.0    0.167736    0.053940    0.09786    0.112305    0.119677    0.124750    0.134990    0.151390    0.179427    0.230741    0.275732    0.387829     0.64353
+iptm                           9988.0    0.160094    0.043286    0.10095    0.114945    0.121924    0.126197    0.134420    0.147755    0.168905    0.207387    0.246868    0.338790     0.57311
+design_iptm                    9988.0    0.160094    0.043286    0.10095    0.114945    0.121924    0.126197    0.134420    0.147755    0.168905    0.207387    0.246868    0.338790     0.57311
+design_iiptm                   9988.0    0.164701    0.050122    0.09524    0.113175    0.121064    0.125900    0.135568    0.149940    0.174200    0.219009    0.263821    0.375092     0.66403
+design_residue_iptm            9988.0    0.167736    0.053940    0.09786    0.112305    0.119677    0.124750    0.134990    0.151390    0.179427    0.230741    0.275732    0.387829     0.64353
+protein_iptm                   9988.0    0.160094    0.043286    0.10095    0.114945    0.121924    0.126197    0.134420    0.147755    0.168905    0.207387    0.246868    0.338790     0.57311
+ptm                            9988.0    0.477180    0.018871    0.44486    0.452785    0.458004    0.460947    0.466328    0.473470    0.482372    0.493736    0.508570    0.560866     0.67229
+design_ptm                     9988.0    0.770300    0.017507    0.70684    0.728250    0.740963    0.747940    0.758730    0.770420    0.782140    0.792796    0.798686    0.809113     0.85884
+target_ptm                     9988.0    0.695258    0.010860    0.66178    0.673511    0.679360    0.682617    0.688520    0.694710    0.701172    0.706930    0.711430    0.730714     0.79495
+min_interaction_pae            9988.0   18.765428    2.788646    3.57443    8.545607   13.130054   15.220033   17.738615   19.441005   20.589455   21.447747   21.878076   22.531309    24.15953
+interaction_pae                9988.0   24.789142    1.704885   12.74757   18.026114   21.410717   22.790125   24.296130   25.219345   25.852643   26.311273   26.551943   26.973495    27.90645
+min_design_to_target_pae       9988.0   18.893518    2.803748    3.84499    8.701017   13.258339   15.295822   17.816860   19.545425   20.735492   21.624947   22.120301   22.864646    24.37434
+complex_plddt                  9988.0    0.686531    0.014498    0.62614    0.652629    0.662573    0.668047    0.677010    0.686590    0.696350    0.704773    0.710080    0.720103     0.74645
+complex_iplddt                 9988.0    0.638489    0.021948    0.56003    0.588026    0.602877    0.610320    0.623528    0.638120    0.653413    0.666840    0.674770    0.689740     0.71665
+complex_pde                    9988.0    1.436271    0.067069    1.05584    1.267123    1.326734    1.353280    1.393607    1.435780    1.480380    1.521482    1.547855    1.590685     1.71876
+complex_ipde                   9988.0   13.447548    1.339712    3.29884    8.262338   11.212499   12.021287   12.908275   13.624800   14.262552   14.802015   15.125026   15.740654    17.08947
+design_ipsae_min               9988.0    0.000950    0.007402    0.00000    0.000000    0.000000    0.000000    0.000000    0.000000    0.000000    0.000000    0.004860    0.021448     0.21998
+design_to_target_ipsae         9988.0    0.002236    0.013623    0.00000    0.000000    0.000000    0.000000    0.000000    0.000000    0.000000    0.000000    0.005110    0.075463     0.27222
+target_to_design_ipsae         9988.0    0.000968    0.007407    0.00000    0.000000    0.000000    0.000000    0.000000    0.000000    0.000000    0.000000    0.004940    0.021448     0.21998
+bb_rmsd                        9988.0   12.000002    6.032650    0.76057    1.293638    2.742757    4.561669    7.784072   11.250520   15.230185   22.034895   23.448394   25.083167    26.75753
+bb_rmsd_design                 9988.0    1.899844    1.062796    0.33315    0.503626    0.663072    0.796935    1.120315    1.652715    2.417460    3.321037    4.022819    5.389478     8.34483
+bb_rmsd_target                 9988.0    0.856087    0.251549    0.49417    0.572482    0.623387    0.656437    0.724367    0.813790    0.926295    1.062011    1.178790    1.764406     5.78674
+bb_rmsd_design_target          9988.0   12.778303    5.422014    0.62404    1.451568    3.336677    5.291319    8.906960   12.919165   16.675695   19.675810   21.457966   24.447913    32.60550
+bb_target_aligned_rmsd_design  9988.0   23.347800   14.476908    0.81122    2.031460    5.088509    8.313185   13.828600   19.321425   27.995860   48.862328   53.141630   60.258786    71.32469
+filter_rmsd                    9988.0   12.000002    6.032650    0.76057    1.293638    2.742757    4.561669    7.784072   11.250520   15.230185   22.034895   23.448394   25.083167    26.75753
+filter_rmsd_design             9988.0    1.899844    1.062796    0.33315    0.503626    0.663072    0.796935    1.120315    1.652715    2.417460    3.321037    4.022819    5.389478     8.34483
+delta_sasa_refolded            9988.0  577.312829  150.982568    0.00000  173.362311  340.016699  392.712205  479.368652  579.534670  676.970947  767.924412  817.570018  916.138188  1138.30273
+plip_hbonds_refolded           9988.0    2.419604    1.864393    0.00000    0.000000    0.000000    0.000000    1.000000    2.000000    3.000000    5.000000    6.000000    8.000000    13.00000
+plip_saltbridge_refolded       9988.0    0.825591    0.929592    0.00000    0.000000    0.000000    0.000000    0.000000    1.000000    1.000000    2.000000    3.000000    4.000000     6.00000
+design_hydrophobicity          9988.0   35.096558    4.825287   10.88640   22.918827   26.598520   28.715180   32.151500   35.798300   37.705150   40.948600   42.889255   46.703365    53.14440
+design_chain_hydrophobicity    9988.0   47.360429    2.323800   40.72330   42.570990   43.700155   44.404380   45.679475   47.240050   48.917150   50.510050   51.413390   52.808199    55.63340
+liability_score                9988.0  199.627553   17.082324  160.00000  165.000000  170.000000  180.000000  190.000000  200.000000  210.000000  225.000000  230.000000  240.000000   295.00000
+liability_num_violations       9988.0   22.276532    1.824706   18.00000   19.000000   19.000000   20.000000   21.000000   22.000000   23.000000   25.000000   25.000000   27.000000    32.00000
+num_design                     9988.0   33.460953    5.558934   20.00000   22.000000   25.000000   26.000000   29.000000   33.000000   37.000000   41.000000   43.000000   46.000000    49.00000
+num_prot_tokens                9988.0  320.705346    5.755367  306.00000  309.000000  311.000000  313.000000  317.000000  321.000000  325.000000  329.000000  331.000000  333.000000   336.00000
+loop                           9988.0    0.751640    0.100713    0.34884    0.511630    0.576920    0.615380    0.687500    0.760000    0.821430    0.870970    0.916670    1.000000     1.00000
+helix                          9988.0    0.131538    0.103667    0.00000    0.000000    0.000000    0.000000    0.081080    0.103450    0.190480    0.279724    0.330796    0.395830     0.48649
+sheet                          9988.0    0.116821    0.089854    0.00000    0.000000    0.000000    0.000000    0.057140    0.096770    0.157890    0.240000    0.301969    0.407410     0.51515
+
+-- Columnas booleanas (recuento True / %) --
+  bb_rmsd<2.5                               448    4.49%
+  bb_target_aligned<2.5                     171    1.71%
+  bb_designability_rmsd_2                  6285   62.93%
+  bb_designability_rmsd_4                  9482   94.93%
+  min_interaction_pae<1.5                     0    0.00%
+  min_interaction_pae<2                       0    0.00%
+  min_interaction_pae<2.5                     0    0.00%
+  min_interaction_pae<3                       0    0.00%
+  min_interaction_pae<4                       2    0.02%
+  min_interaction_pae<5                      18    0.18%
+  design_ptm>80                             418    4.19%
+  design_ptm>75                            8768   87.79%
+  design_iptm>80                              0    0.00%
+  design_iptm>70                              0    0.00%
+  design_iptm>60                              0    0.00%
+  design_iptm>50                              4    0.04%
+  has_x                                       0    0.00%
+  pass_has_x_filter                        9988  100.00%
+  pass_filters                              407    4.07%
+  pass_filter_rmsd_filter                   448    4.49%
+  pass_filter_rmsd_design_filter           7667   76.76%
+  pass_CYS_fraction_filter                 9988  100.00%
+  pass_ALA_fraction_filter                 9988  100.00%
+  pass_GLY_fraction_filter                 9677   96.89%
+  pass_GLU_fraction_filter                 9988  100.00%
+  pass_LEU_fraction_filter                 9988  100.00%
+  pass_VAL_fraction_filter                 9988  100.00%
+
+====================================================================================================
+3. FIDELIDAD DE EPITOPO (bindsite_under_*)
+====================================================================================================
+SEMANTICA (boltzgen/task/analyze/analyze.py:832-843): para cada token del sitio de union
+se calcula la distancia center_coords al token DISEÑADO mas cercano; la columna es la
+FRACCION de residuos de epitopo con esa distancia < umbral (A). NO es un RMSD.
+Se mide sobre la estructura GENERADA (intermediate_designs_inverse_folded), no el refold.
+
+Epitopo pedido: 16 residuos (chain Exp 148..163 = Spike P479..S494, motivo RBM/ACE2).
+Por eso la fraccion se mueve en multiplos de 1/16 = 0.0625.
+
+bindsite_under_3rmsd: media 0.0000  mediana 0.0000  max 0.0625  n(>0) 5 (0.05%)
+bindsite_under_4rmsd: media 0.0189  mediana 0.0000  max 0.1875  n(>0) 2724 (27.27%)
+bindsite_under_5rmsd: media 0.1609  mediana 0.1250  max 0.5000  n(>0) 9543 (95.54%)
+bindsite_under_6rmsd: media 0.3920  mediana 0.3750  max 0.8125  n(>0) 9988 (100.00%)
+bindsite_under_7rmsd: media 0.5828  mediana 0.5625  max 1.0000  n(>0) 9988 (100.00%)
+bindsite_under_8rmsd: media 0.7482  mediana 0.7500  max 1.0000  n(>0) 9988 (100.00%)
+bindsite_under_9rmsd: media 0.8562  mediana 0.8750  max 1.0000  n(>0) 9988 (100.00%)
+
+Distribucion de valores discretos (n residuos de 16 en contacto):
+  bindsite_under_3rmsd: 0res:9983, 1res:5
+  bindsite_under_4rmsd: 0res:7264, 1res:2426, 2res:296, 3res:2
+  bindsite_under_5rmsd: 0res:445, 1res:1643, 2res:2943, 3res:2661, 4res:1504, 5res:595, 6res:166, 7res:29, 8res:2
+  bindsite_under_6rmsd: 1res:15, 2res:72, 3res:433, 4res:966, 5res:1774, 6res:2405, 7res:2029, 8res:1306, 9res:634, 10res:255, 11res:74, 12res:20, 13res:5
+  bindsite_under_7rmsd: 2res:1, 3res:2, 4res:41, 5res:141, 6res:409, 7res:883, 8res:1754, 9res:2447, 10res:1882, 11res:1207, 12res:692, 13res:321, 14res:136, 15res:66, 16res:6
+  bindsite_under_8rmsd: 5res:18, 6res:33, 7res:39, 8res:146, 9res:482, 10res:1547, 11res:2001, 12res:2086, 13res:1488, 14res:1020, 15res:691, 16res:437
+  bindsite_under_9rmsd: 7res:5, 8res:28, 9res:40, 10res:141, 11res:507, 12res:1840, 13res:2355, 14res:1590, 15res:1438, 16res:2044
+
+Criterio canonico de BoltzGen (filter.py:255-260): filter_bindingsite usa
+bindsite_under_8rmsd > 0.0001 -> "al menos 1 residuo del epitopo a <8 A de un residuo disenado".
+En esta campana filter_bindingsite estaba en FALSE, asi que NO se aplico.
+
+Si se hubiera aplicado: 9988 / 9988 = 100.00% pasarian.
+  >=  1/16 residuos de epitopo a <8 A :  9988 (100.00%)
+  >=  2/16 residuos de epitopo a <8 A :  9988 (100.00%)
+  >=  4/16 residuos de epitopo a <8 A :  9988 (100.00%)
+  >=  8/16 residuos de epitopo a <8 A :  9898 ( 99.10%)
+  >= 16/16 residuos de epitopo a <8 A :   437 (  4.38%)
+
+native_rmsd / native_rmsd_bb (no calculados, native=false):
+  native_rmsd unicos: [0.]  native_rmsd_bb unicos: [0.]
+  native_rmsd_refolded unicos: [0.]  native_rmsd_bb_refolded unicos: [0.]
+
+====================================================================================================
+4. DESGLOSE POR SCAFFOLD (las 4 plantillas de nanocuerpo)
+====================================================================================================
+AVISO: per_target_metrics_analyze.csv tiene UNA sola fila (target_id="design"):
+BoltzGen trata las 4 plantillas como una unica "diana". El desglose siguiente lo he
+reconstruido yo clasificando cada diseno por su framework FR2/FR3 (100% concordante con FR3).
+
+n por scaffold:
+scaffold
+7eow_caplacizumab     2541
+7xl0_vobarilizumab    2533
+8coh_gefurulimab      2401
+8z8v_ozoralizumab     2513
+
+MEDIA por scaffold:
+                    design_to_target_iptm  min_interaction_pae  design_ptm  complex_plddt  complex_iplddt  bb_rmsd  bb_rmsd_design  bb_target_aligned_rmsd_design  bindsite_under_8rmsd  bindsite_under_6rmsd  delta_sasa_refolded  plip_hbonds_refolded  num_design  liability_score
+scaffold                                                                                                                                                                                                                                                                             
+7eow_caplacizumab                  0.1576              19.3066      0.7636         0.6874          0.6398  13.3353          1.7305                        26.1735                0.7366                0.3696             575.8333                2.4880     38.3920         203.5793
+7xl0_vobarilizumab                 0.1742              18.3899      0.7634         0.6862          0.6356   9.9804          2.1123                        18.0329                0.8060                0.4017             577.6187                2.2779     29.6210         197.0055
+8coh_gefurulimab                   0.1677              18.8620      0.7724         0.6871          0.6409  12.2747          1.7869                        24.2973                0.7339                0.3791             582.6801                2.6710     35.3978         194.2232
+8z8v_ozoralizumab                  0.1715              18.5045      0.7820         0.6855          0.6378  12.4231          1.9648                        24.9407                0.7151                0.4173             573.3725                2.2531     30.4950         203.4381
+
+MEDIANA por scaffold:
+                    design_to_target_iptm  min_interaction_pae  design_ptm  complex_plddt  complex_iplddt  bb_rmsd  bb_rmsd_design  bb_target_aligned_rmsd_design  bindsite_under_8rmsd  bindsite_under_6rmsd  delta_sasa_refolded  plip_hbonds_refolded  num_design  liability_score
+scaffold                                                                                                                                                                                                                                                                             
+7eow_caplacizumab                  0.1435              19.9518      0.7641         0.6874          0.6395  13.0039          1.5360                        20.6135                0.7500                0.3750             585.5566                   2.0        38.0            205.0
+7xl0_vobarilizumab                 0.1618              18.8473      0.7633         0.6858          0.6354   9.0192          1.8490                        16.1088                0.8125                0.3750             571.6992                   2.0        30.0            195.0
+8coh_gefurulimab                   0.1533              19.4249      0.7726         0.6873          0.6399  11.6201          1.6158                        20.8962                0.7500                0.3750             584.4014                   2.0        35.0            190.0
+8z8v_ozoralizumab                  0.1486              19.4734      0.7837         0.6859          0.6380  11.7416          1.6323                        20.4439                0.6875                0.4375             576.2256                   2.0        31.0            205.0
+
+Tasas de flags booleanos por scaffold (%):
+                    bb_rmsd<2.5  bb_target_aligned<2.5  bb_designability_rmsd_2  bb_designability_rmsd_4  min_interaction_pae<5  design_ptm>80  pass_filters
+scaffold                                                                                                                                                    
+7eow_caplacizumab          2.95                   0.51                    68.36                    97.48                   0.04           0.28          2.91
+7xl0_vobarilizumab         1.86                   0.55                    54.68                    92.81                   0.20           1.07          1.74
+8coh_gefurulimab           1.67                   0.42                    67.93                    98.17                   0.08           1.29          1.67
+8z8v_ozoralizumab         11.38                   5.33                    60.96                    91.40                   0.40          14.05          9.91
+
+Recuentos absolutos:
+                    bb_rmsd<2.5  bb_target_aligned<2.5  bb_designability_rmsd_2  bb_designability_rmsd_4  min_interaction_pae<5  design_ptm>80  pass_filters
+scaffold                                                                                                                                                    
+7eow_caplacizumab            75                     13                     1737                     2477                      1              7            74
+7xl0_vobarilizumab           47                     14                     1385                     2351                      5             27            44
+8coh_gefurulimab             40                     10                     1631                     2357                      2             31            40
+8z8v_ozoralizumab           286                    134                     1532                     2297                     10            353           249
+
+Maximos de design_to_target_iptm por scaffold:
+scaffold
+7eow_caplacizumab     0.4974
+7xl0_vobarilizumab    0.5099
+8coh_gefurulimab      0.5605
+8z8v_ozoralizumab     0.6435
+
+Top-100 final por scaffold:
+scaffold
+8z8v_ozoralizumab     91
+8coh_gefurulimab       4
+7eow_caplacizumab      3
+7xl0_vobarilizumab     2
+
+Enriquecimiento top100 vs base (%base -> %top100):
+  7eow_caplacizumab      25.44% ->  3.00%
+  7xl0_vobarilizumab     25.36% ->  2.00%
+  8coh_gefurulimab       24.04% ->  4.00%
+  8z8v_ozoralizumab      25.16% -> 91.00%
+
+Kruskal-Wallis entre los 4 scaffolds:
+  design_to_target_iptm            H=   405.22  p=1.639e-87
+  min_interaction_pae              H=   300.21  p=8.959e-65
+  bb_rmsd                          H=   501.87  p=1.874e-108
+  bb_target_aligned_rmsd_design    H=   548.37  p=1.564e-118
+  bindsite_under_8rmsd             H=   884.00  p=2.617e-191
+
+====================================================================================================
+5. HIT RATE CON CRITERIOS DE DISTINTA EXIGENCIA
+====================================================================================================
+Justificacion de umbrales: la literatura de diseno de binders (RFdiffusion/BindCraft/AF2)
+usa tipicamente ipTM>=0.8 y PAE_interaction<10 como filtro in-silico de "binder creible";
+BindCraft usa ipTM>=0.8. BoltzGen aporta ademas designabilidad (bb_rmsd<2.5 = el refold
+reproduce la pose disenada) y adherencia al sitio (bindsite_under_8rmsd).
+
+  A_literatura_estricto (ipTM>=0.8 & min_iPAE<10 & bb_rmsd<2.5 & bindsite8>=0.5) n=    0    0.000%
+  B_literatura_relajado (ipTM>=0.6 & min_iPAE<15 & bb_rmsd<2.5 & bindsite8>=0.5) n=    2    0.020%
+  C_pose_correcta (bb_rmsd<2.5 & bb_target_aligned<2.5 & bindsite8>=0.5)   n=  169    1.692%
+  D_designabilidad_sola (bb_rmsd<2.5)                                      n=  448    4.485%
+  E_pipeline_BoltzGen (pass_filters tal cual corrio)                       n=  407    4.075%
+  F_pipeline+bindingsite (pass_filters & bindsite8>0)                      n=  407    4.075%
+  G_top_decil_confianza (ipTM>=0.3 & min_iPAE<15)                          n=  378    3.785%
+
+Componentes por separado (para ver que factor limita):
+  ipTM>=0.8                  n=    0    0.000%
+  ipTM>=0.7                  n=    0    0.000%
+  ipTM>=0.6                  n=    2    0.020%
+  ipTM>=0.5                  n=   16    0.160%
+  ipTM>=0.4                  n=   81    0.811%
+  ipTM>=0.3                  n=  378    3.785%
+  min_iPAE<5                 n=   18    0.180%
+  min_iPAE<10                n=  180    1.802%
+  min_iPAE<15                n=  930    9.311%
+  bb_rmsd<2.5                n=  448    4.485%
+  bb_target_aligned<2.5      n=  171    1.712%
+  bindsite8>=0.5             n= 9898   99.099%
+  bindsite8==1.0             n=  437    4.375%
+
+Cruce designabilidad x pose (tabla de contingencia bb_rmsd<2.5 vs bb_target_aligned<2.5):
+bb_target_aligned<2.5  False  True 
+bb_rmsd<2.5                        
+False                   9540      0
+True                     277    171
+
+De los 448 con bb_rmsd<2.5, distribucion de ipTM:
+count    448.0000
+mean       0.2405
+std        0.0964
+min        0.1089
+25%        0.1637
+50%        0.2161
+75%        0.2962
+90%        0.3755
+95%        0.4188
+99%        0.5368
+max        0.6435
+
+De los 171 con bb_target_aligned<2.5:
+       design_to_target_iptm  min_interaction_pae   bb_rmsd  bindsite_under_8rmsd
+count               171.0000             171.0000  171.0000              171.0000
+mean                  0.2574              14.4725    1.3125                0.7065
+std                   0.1036               4.6233    0.3187                0.0920
+min                   0.1089               3.6259    0.7606                0.3125
+25%                   0.1762              11.0401    1.0680                0.6250
+50%                   0.2337              15.2781    1.2767                0.6875
+75%                   0.3205              18.3743    1.5043                0.7500
+max                   0.6435              22.5303    2.4799                0.9375
+
+====================================================================================================
+6. TOP 100 Y TOP 10: CARACTERIZACION Y REDUNDANCIA
+====================================================================================================
+Resumen TOP-100:
+                               count      mean      std       min       25%       50%       75%       max
+design_to_target_iptm          100.0    0.3456   0.0906    0.2233    0.2783    0.3292    0.3959    0.6435
+min_interaction_pae            100.0   10.3219   3.4191    3.6259    7.3680   10.2623   13.1645   15.9415
+design_ptm                     100.0    0.7969   0.0139    0.7803    0.7866    0.7935    0.8035    0.8476
+complex_plddt                  100.0    0.6904   0.0140    0.6532    0.6813    0.6905    0.7022    0.7203
+bb_rmsd                        100.0    1.5387   0.4618    0.7988    1.1565    1.4895    1.8742    2.4878
+bb_rmsd_design                 100.0    1.1566   0.5504    0.3468    0.6693    0.9933    1.5795    2.4975
+bb_target_aligned_rmsd_design  100.0    2.7799   1.2267    0.9723    1.7968    2.4859    3.3806    6.5606
+bindsite_under_8rmsd           100.0    0.6912   0.0960    0.3125    0.6250    0.6875    0.7500    0.9375
+delta_sasa_refolded            100.0  630.6955  83.8550  476.8818  574.1277  621.7949  691.9895  803.4414
+plip_hbonds_refolded           100.0    3.1600   1.7099    0.0000    2.0000    3.0000    4.0000    8.0000
+plip_saltbridge_refolded       100.0    0.6300   0.5252    0.0000    0.0000    1.0000    1.0000    2.0000
+num_design                     100.0   32.3900   3.5044   26.0000   30.0000   32.0000   34.0000   44.0000
+liability_score                100.0  207.6500  17.1661  180.0000  195.0000  205.0000  220.0000  245.0000
+max_rank                       100.0  152.4200  36.8267   31.5000  134.2500  161.5000  180.3750  200.0000
+
+Flags booleanos TOP-100:
+  bb_rmsd<2.5                100 / 100
+  bb_target_aligned<2.5       52 / 100
+  bb_designability_rmsd_2     90 / 100
+  min_interaction_pae<5        7 / 100
+  design_ptm>80               33 / 100
+
+Comparativa TOP100 vs poblacion (media):
+  design_to_target_iptm            pobl     0.1677   top100     0.3456
+  min_interaction_pae              pobl    18.7654   top100    10.3219
+  design_ptm                       pobl     0.7703   top100     0.7969
+  complex_plddt                    pobl     0.6865   top100     0.6904
+  bb_rmsd                          pobl    12.0000   top100     1.5387
+  bb_rmsd_design                   pobl     1.8998   top100     1.1566
+  bb_target_aligned_rmsd_design    pobl    23.3478   top100     2.7799
+  bindsite_under_8rmsd             pobl     0.7482   top100     0.6913
+  delta_sasa_refolded              pobl   577.3128   top100   630.6955
+  plip_hbonds_refolded             pobl     2.4196   top100     3.1600
+  plip_saltbridge_refolded         pobl     0.8256   top100     0.6300
+  num_design                       pobl    33.4610   top100    32.3900
+  liability_score                  pobl   199.6276   top100   207.6500
+  max_rank                         pobl  6914.9331   top100   152.4200
+
+-- REDUNDANCIA DE SECUENCIA --
+
+[TOP-100] n=100  unicas=100
+  cadenas completas unicas: 100
+  longitudes designed_sequence: min 26 max 44
+  pares de igual longitud: 419 de 4950
+  identidad media 0.326  mediana 0.294  max 0.933
+  pares con identidad >=0.9: 1   >=0.8: 6   >=0.7: 18
+  clusters greedy al 70% identidad: 79
+  clusters greedy al 80% identidad: 94
+
+-- TOP 10 intermedio (intermediate_ranked_10_designs) --
+Nota: los 10 "intermediate_ranked" son los 10 de mayor calidad SIN el criterio de diversidad;
+los muestro como el top-10 por final_rank de all_designs_metrics.csv:
+              id  final_rank          scaffold  design_to_target_iptm  min_interaction_pae  design_ptm  bb_rmsd  bindsite_under_8rmsd  complex_plddt  num_design
+design_spec_8980           1 8z8v_ozoralizumab                 0.6014               4.2131      0.8360   1.0633                0.6250         0.7063          32
+design_spec_3678           2 8z8v_ozoralizumab                 0.4581               5.4881      0.8084   1.1248                0.8125         0.6532          33
+design_spec_3936           3 8z8v_ozoralizumab                 0.4038               6.6242      0.8004   2.1468                0.9375         0.6813          35
+design_spec_2729           4 8z8v_ozoralizumab                 0.4180               6.4552      0.8008   1.1543                0.7500         0.7000          34
+design_spec_4607           5 8z8v_ozoralizumab                 0.4620               4.7320      0.7994   1.5096                0.7500         0.6811          32
+design_spec_4934           6 8z8v_ozoralizumab                 0.5824               4.3578      0.8200   1.3385                0.6250         0.6955          39
+design_spec_0115           7 8z8v_ozoralizumab                 0.5054               4.8854      0.8104   1.7556                0.8750         0.7149          33
+design_spec_9415           8 8z8v_ozoralizumab                 0.3886               8.2392      0.7955   1.3978                0.7500         0.7022          34
+design_spec_7825           9 8z8v_ozoralizumab                 0.4078               6.1031      0.7953   1.6140                0.6250         0.7039          35
+design_spec_9147          10 8z8v_ozoralizumab                 0.3987               7.6648      0.8034   1.9783                0.6250         0.6589          34
+
+[TOP-10] n=10  unicas=10
+  cadenas completas unicas: 10
+  longitudes designed_sequence: min 32 max 39
+  pares de igual longitud: 6 de 45
+  identidad media 0.388  mediana 0.254  max 0.750
+  pares con identidad >=0.9: 0   >=0.8: 0   >=0.7: 1
+  clusters greedy al 70% identidad: 9
+  clusters greedy al 80% identidad: 10
+
+Secuencias designed_sequence del TOP-10:
+  rank   1 8z8v_ozoralizumab  GISNFSNYAILSKGYNYSTRGLYPYLAYWGQG
+  rank   2 8z8v_ozoralizumab  GFGDFSNYAIYGKGYNYSKRGIYPYSMPYWGQG
+  rank   3 8z8v_ozoralizumab  GLPLPFSNTSISNHNGQTSTRGDPLYGYLAYWGQG
+  rank   4 8z8v_ozoralizumab  GISNFSNTAIYGKGYGYSTRGNGYYGYFAYWGQG
+  rank   5 8z8v_ozoralizumab  GISNFSNTAIYGKGYGYSTRGTRYSLAYWGQG
+  rank   6 8z8v_ozoralizumab  GLGSAFSNYSIGGKSENYKKVLLSARHGFPENKEYWGQG
+  rank   7 8z8v_ozoralizumab  GLPLSFSNTAIYNDSNGTSTRGLPGNFAYWGQG
+  rank   8 8z8v_ozoralizumab  GFTFSDYGIGSKSQGYKTVYPTPRYGDKEYWGQG
+  rank   9 8z8v_ozoralizumab  GLPLPFSNTTIYGKGYGYKTRGLARYGTAAYWGQG
+  rank  10 8z8v_ozoralizumab  GLRIPFSDTGIGNSSSGKKVVERGYAGVEYWGQG
+
+Secuencias designed_sequence del TOP-100 (primeras 25):
+    1 8z8v_ozoralizumab  GISNFSNYAILSKGYNYSTRGLYPYLAYWGQG
+    2 8z8v_ozoralizumab  GFGDFSNYAIYGKGYNYSKRGIYPYSMPYWGQG
+    3 8z8v_ozoralizumab  GLPLPFSNTSISNHNGQTSTRGDPLYGYLAYWGQG
+    4 8z8v_ozoralizumab  GISNFSNTAIYGKGYGYSTRGNGYYGYFAYWGQG
+    5 8z8v_ozoralizumab  GISNFSNTAIYGKGYGYSTRGTRYSLAYWGQG
+    6 8z8v_ozoralizumab  GLGSAFSNYSIGGKSENYKKVLLSARHGFPENKEYWGQG
+    7 8z8v_ozoralizumab  GLPLSFSNTAIYNDSNGTSTRGLPGNFAYWGQG
+    8 8z8v_ozoralizumab  GFTFSDYGIGSKSQGYKTVYPTPRYGDKEYWGQG
+    9 8z8v_ozoralizumab  GLPLPFSNTTIYGKGYGYKTRGLARYGTAAYWGQG
+   10 8z8v_ozoralizumab  GLRIPFSDTGIGNSSSGKKVVERGYAGVEYWGQG
+   11 8z8v_ozoralizumab  GFTFSSTSIGNKSQNYKKVVGGRDEPRLSGKEYWGQG
+   12 8z8v_ozoralizumab  GLPIKFSDTVIYSKGYNYKKRGWPYYLAYWGQG
+   13 8z8v_ozoralizumab  GLPLPFSSYAIGSKANNYKKVASGNDGTRYYSGKVYWGQG
+   14 8z8v_ozoralizumab  GFTFSSSGIGSSGNTVVTNARSGTGKYGEYWGQG
+   15 8z8v_ozoralizumab  GFGNFSNYAILGKGDNYSTRGLPGYFAYWGQG
+   16 8z8v_ozoralizumab  GFGTFSNYAISGSGGSTRGWYPYSAAYWGQG
+   17 8z8v_ozoralizumab  GLPAPFSDYGIGGKSQNYSKINGNTRSYPYDSKVYWGQG
+   18 8z8v_ozoralizumab  GFSNFSNYAIGGSSTGSTRGYTFAYWGQG
+   19 8z8v_ozoralizumab  GFSFSVPISGSSGSKKVNLSPRYGYPYKEYWGQG
+   20 8z8v_ozoralizumab  GFTFSNYAISSKGYNYSTRGLPYYLSYWGQG
+   21 8z8v_ozoralizumab  GFTFSNYAIGGSSDTSKRGYYFAYWGQG
+   22 8z8v_ozoralizumab  GFTFSSYGIGSKSQGYKKVYVPSLSSTWYWGQG
+   23 8z8v_ozoralizumab  GFTFNSTISTHNGQTSTRGDFRYGTAGYWGQG
+   24 8z8v_ozoralizumab  GFTFSETGIGSKSNNYSTVNGVGRYSDGKEYWGQG
+   25 8z8v_ozoralizumab  GFSFNNAIYGKKDNYKTRGDARLGTAAYWGQG
+
+====================================================================================================
+7. CORRELACIONES Y DOMINANCIA DEL RANKING
+====================================================================================================
+Correlacion de Spearman con design_to_target_iptm (ordenada):
+interaction_pae                 -0.963
+design_iiptm                     0.953
+min_design_to_target_pae        -0.940
+min_interaction_pae             -0.939
+design_iptm                      0.938
+iptm                             0.938
+complex_ipde                    -0.629
+ptm                              0.581
+bb_rmsd                         -0.193
+bb_target_aligned_rmsd_design   -0.184
+complex_iplddt                  -0.178
+num_design                      -0.148
+target_ptm                      -0.147
+helix                           -0.136
+delta_sasa_refolded              0.133
+sheet                            0.123
+plip_hbonds_refolded             0.112
+plip_saltbridge_refolded         0.099
+design_ptm                      -0.098
+bb_rmsd_design                  -0.082
+loop                             0.042
+design_hydrophobicity           -0.039
+liability_score                 -0.023
+bindsite_under_8rmsd             0.018
+bindsite_under_6rmsd            -0.007
+bb_rmsd_target                   0.002
+complex_plddt                   -0.002
+
+Correlacion de Spearman con bb_rmsd (designabilidad; menor es mejor):
+bb_target_aligned_rmsd_design    0.913
+target_ptm                       0.275
+interaction_pae                  0.266
+iptm                            -0.231
+design_iptm                     -0.231
+min_design_to_target_pae         0.215
+min_interaction_pae              0.213
+design_iiptm                    -0.194
+design_to_target_iptm           -0.193
+sheet                           -0.156
+complex_ipde                     0.156
+num_design                       0.156
+complex_plddt                   -0.139
+helix                            0.131
+design_hydrophobicity            0.103
+bb_rmsd_design                   0.087
+plip_saltbridge_refolded         0.059
+complex_iplddt                  -0.057
+ptm                             -0.049
+bindsite_under_8rmsd            -0.047
+delta_sasa_refolded             -0.046
+plip_hbonds_refolded             0.036
+liability_score                 -0.029
+bb_rmsd_target                   0.028
+bindsite_under_6rmsd            -0.024
+design_ptm                       0.012
+loop                            -0.002
+
+Correlacion de Spearman con bindsite_under_8rmsd:
+bindsite_under_6rmsd             0.504
+design_ptm                      -0.277
+bb_rmsd_design                   0.264
+target_ptm                      -0.172
+ptm                             -0.152
+complex_iplddt                  -0.127
+delta_sasa_refolded              0.101
+num_design                       0.063
+complex_ipde                    -0.060
+design_hydrophobicity           -0.058
+sheet                            0.057
+complex_plddt                   -0.056
+helix                           -0.055
+bb_rmsd                         -0.047
+bb_target_aligned_rmsd_design   -0.043
+min_design_to_target_pae        -0.025
+loop                            -0.023
+design_to_target_iptm            0.018
+design_iptm                     -0.014
+iptm                            -0.014
+design_iiptm                    -0.014
+plip_hbonds_refolded             0.013
+min_interaction_pae             -0.013
+bb_rmsd_target                   0.012
+liability_score                 -0.005
+plip_saltbridge_refolded         0.002
+interaction_pae                 -0.001
+
+-- Dominancia del ranking final --
+El ranking de BoltzGen es max_rank = maximo de los 6 sub-rankings (peor posicion manda).
+Spearman de final_rank con cada sub-ranking (sobre los 407 que pasan filtros):
+  rank_design_to_target_iptm             rho=0.7454
+  rank_design_ptm                        rho=0.5750
+  rank_neg_min_design_to_target_pae      rho=0.7061
+  rank_plip_hbonds_refolded              rho=0.2564
+  rank_plip_saltbridge_refolded          rho=0.0347
+  rank_delta_sasa_refolded               rho=0.1049
+  max_rank                               rho=1.0000
+
+Frecuencia con la que cada sub-ranking ES el maximo (el que define max_rank), n=407:
+rank_design_ptm                      187
+rank_neg_min_design_to_target_pae    105
+rank_design_to_target_iptm            70
+rank_delta_sasa_refolded              29
+rank_plip_hbonds_refolded             11
+rank_plip_saltbridge_refolded          5
+
+Sobre los 9988:
+rank_design_ptm                      4291
+rank_neg_min_design_to_target_pae    2730
+rank_design_to_target_iptm           2255
+rank_delta_sasa_refolded              454
+rank_plip_hbonds_refolded             199
+rank_plip_saltbridge_refolded          59
+
+Spearman de final_rank con las metricas crudas (407 que pasan filtros):
+  design_to_target_iptm            rho=-0.7454
+  design_ptm                       rho=-0.5750
+  min_design_to_target_pae         rho=0.7061
+  plip_hbonds_refolded             rho=-0.2564
+  plip_saltbridge_refolded         rho=-0.0347
+  delta_sasa_refolded              rho=-0.1049
+  bb_rmsd                          rho=0.2372
+  bindsite_under_8rmsd             rho=0.1016
+
+====================================================================================================
+8. COSTE REAL (tiempos extraidos de campaign_driver.log)
+====================================================================================================
+Inicio  : 2026-09-15 12:38:29   Fin: 2026-09-23 19:21:31   rc=0
+Wall clock total: 715382 s = 198.72 h = 8.28 dias
+Suma de los 5 pasos: 715374.0 s = 198.72 h  (cubre 100.00% del wall clock)
+Overhead no contabilizado (configuracion/carga de modelos): 8 s = 0.1 min
+
+paso                       segundos     horas   % total   s/diseno   s/diseno/GPU
+1 design                   290588.2     80.72    40.62%      29.06         116.24
+2 inverse_folding            2509.3      0.70     0.35%       0.25           1.00
+3 folding                  417475.4    115.97    58.36%      41.75         166.99
+4 analysis                   4768.4      1.32     0.67%       0.48           1.91
+5 filtering                    32.7      0.01     0.00%       0.00           0.01
+TOTAL                      715374.0    198.72   100.00%      71.54         286.15
+
+Rendimiento agregado (4x Tesla T4):
+  50.32 disenos/hora (wall clock, las 4 GPU juntas)
+  50.32 disenos/hora (suma de pasos)
+  12.58 disenos/hora/GPU
+  71.5 s/diseno (wall) ; 286.2 s-GPU/diseno
+  GPU-horas totales: 794.9
+
+NOTA: el calculo s-GPU/diseno asume ocupacion exclusiva de las 4 T4. Carver NO es exclusiva
+(otros investigadores la usan en paralelo), asi que el coste en tiempo de pared puede incluir
+contencion no atribuible a esta campana. No he podido medirlo a posteriori.
+
+Coste por diseno "exitoso" segun cada criterio (GPU-horas por hit):
+  A ipTM>=0.8 estricto                                                   n=0   -> INFINITO (ningun hit)
+  B ipTM>=0.6 relajado                                                   n=   2 ->    397.4 GPU-h/hit ;   99.36 h-pared/hit
+  C pose correcta (bb_rmsd<2.5 & bb_target_aligned<2.5 & bindsite8>=.5)  n= 169 ->      4.7 GPU-h/hit ;    1.18 h-pared/hit
+  D designabilidad bb_rmsd<2.5                                           n= 448 ->      1.8 GPU-h/hit ;    0.44 h-pared/hit
+  E pass_filters BoltzGen                                                n= 407 ->      2.0 GPU-h/hit ;    0.49 h-pared/hit
+  top-100 entregado                                                      n= 100 ->      7.9 GPU-h/hit ;    1.99 h-pared/hit
+  top-10 entregado                                                       n=  10 ->     79.5 GPU-h/hit ;   19.87 h-pared/hit
+
+====================================================================================================
+9. COMPARACION CON CORRIDAS ANTERIORES EN CARVER
+====================================================================================================
+Corridas encontradas (todas con all_designs_metrics.csv):
+                                     corrida    n  design_to_target_iptm_med  design_to_target_iptm_max  min_interaction_pae_med  min_interaction_pae_max  bb_rmsd_med  bb_rmsd_max  design_ptm_med  design_ptm_max  bindsite_under_8rmsd_med  bindsite_under_8rmsd_max     bb_rmsd<2.5 bb_target_aligned<2.5
+                    rbd_campaign/run1 (ESTA) 9988                     0.1514                     0.6435                  19.4410                  24.1595      11.2505      26.7575          0.7704          0.8588                    0.7500                    1.0000 448/9988 (4.5%)       171/9988 (1.7%)
+pfcsp_bench/run1 (piloto PfCSP 7RXP, 14-sep)    1                     0.3098                     0.3098                  10.4414                  10.4414      10.2648      10.2648          0.7106          0.7106                    0.5714                    0.5714      0/1 (0.0%)            0/1 (0.0%)
+panel_tests/hard_targets/run1 (6M1U, 14-sep)    1                     0.2898                     0.2898                  14.0009                  14.0009      15.3246      15.3246          0.7720          0.7720                       NaN                       NaN      0/1 (0.0%)            0/1 (0.0%)
+7RI1_cropped/run_A (HIV gp120/VHH-J3, 8-sep)   50                     0.1417                     0.2972                  18.1094                  22.1495      14.7361      20.7018          0.7358          0.7699                    0.4667                    0.7333     0/50 (0.0%)           0/50 (0.0%)
+ boltzgen_test/run (test instalacion, 4-sep)    1                     0.1267                     0.1267                  23.2810                  23.2810       2.5434       2.5434          0.7693          0.7693                    0.8182                    0.8182      0/1 (0.0%)            0/1 (0.0%)
+
+COMPARABILIDAD: solo pfcsp_bench y panel_tests/6M1U usan el mismo protocolo nanobody-anything;
+pero son pilotos de n muy pequeno (ver columna n), asi que no soportan comparacion estadistica.
+7RI1_cropped y boltzgen_test son de otra diana/otro momento del setup.
+El dato de referencia "0.41% de pose correcta" de la campana anterior NO esta en estos CSV:
+procede del panel de validacion previo, no de estos directorios. No lo he podido reproducir aqui.
+
+====================================================================================================
+10. CONTROL: por que domina 8z8v/ozoralizumab?
+====================================================================================================
+Hipotesis: 8z8v es el scaffold con menos residuos rediseñados y CDR3 mas corto,
+lo que facilita que el refold reproduzca la pose (bb_rmsd<2.5).
+
+Longitud de region rediseñada (num_design) por scaffold:
+                     count   mean   std   min   25%   50%   75%   max
+scaffold                                                             
+7eow_caplacizumab   2541.0  38.39  4.47  28.0  35.0  38.0  42.0  49.0
+7xl0_vobarilizumab  2533.0  29.62  4.03  20.0  27.0  30.0  33.0  39.0
+8coh_gefurulimab    2401.0  35.40  4.43  25.0  32.0  35.0  39.0  46.0
+8z8v_ozoralizumab   2513.0  30.50  3.97  21.0  27.0  31.0  34.0  40.0
+
+Tasa bb_rmsd<2.5 por scaffold DENTRO de bins de num_design (control):
+scaffold  7eow_caplacizumab  7xl0_vobarilizumab  8coh_gefurulimab  8z8v_ozoralizumab
+bin                                                                                 
+(19, 25]                NaN                1.59              0.00               3.32
+(25, 30]               1.54                2.30              3.50              10.25
+(30, 35]               2.31                1.41              2.11              14.00
+(35, 40]               2.22                2.37              0.60              14.53
+(40, 50]               4.30                 NaN              1.16                NaN
+
+n por celda:
+scaffold  7eow_caplacizumab  7xl0_vobarilizumab  8coh_gefurulimab  8z8v_ozoralizumab
+bin                                                                                 
+(19, 25]                NaN               441.0               6.0              301.0
+(25, 30]               65.0               999.0             371.0              937.0
+(30, 35]              693.0               924.0             853.0              986.0
+(35, 40]              900.0               169.0             827.0              289.0
+(40, 50]              883.0                 NaN             344.0                NaN
+
+Interpretacion: la ventaja de 8z8v se mantiene dentro de cada bin de longitud,
+luego NO se explica solo por la longitud del diseño.
+
+Spearman num_design vs bb_rmsd por scaffold:
+  7eow_caplacizumab      rho=-0.053
+  7xl0_vobarilizumab     rho=0.158
+  8coh_gefurulimab       rho=0.142
+  8z8v_ozoralizumab      rho=-0.031
+
+design_ptm por scaffold (confianza del pliegue del propio binder):
+                     count    mean     std     min     50%     90%     99%     max
+scaffold                                                                          
+7eow_caplacizumab   2541.0  0.7636  0.0152  0.7068  0.7641  0.7828  0.7958  0.8110
+7xl0_vobarilizumab  2533.0  0.7634  0.0166  0.7110  0.7633  0.7839  0.8004  0.8141
+8coh_gefurulimab    2401.0  0.7724  0.0136  0.7228  0.7726  0.7896  0.8012  0.8588
+8z8v_ozoralizumab   2513.0  0.7820  0.0172  0.7195  0.7837  0.8023  0.8159  0.8476
+
+Figuras guardadas en /tmp/claude-1000/-home-enzo-DiffSBDD/701bfd96-d9ae-483a-a7ed-a29b0f7ffb29/scratchpad/figuras
+   /tmp/claude-1000/-home-enzo-DiffSBDD/701bfd96-d9ae-483a-a7ed-a29b0f7ffb29/scratchpad/figuras/01_distribuciones_globales.png
+   /tmp/claude-1000/-home-enzo-DiffSBDD/701bfd96-d9ae-483a-a7ed-a29b0f7ffb29/scratchpad/figuras/02_epitopo.png
+   /tmp/claude-1000/-home-enzo-DiffSBDD/701bfd96-d9ae-483a-a7ed-a29b0f7ffb29/scratchpad/figuras/03_por_scaffold.png
+   /tmp/claude-1000/-home-enzo-DiffSBDD/701bfd96-d9ae-483a-a7ed-a29b0f7ffb29/scratchpad/figuras/04_dispersion.png
+   /tmp/claude-1000/-home-enzo-DiffSBDD/701bfd96-d9ae-483a-a7ed-a29b0f7ffb29/scratchpad/figuras/05_embudo.png
+   /tmp/claude-1000/-home-enzo-DiffSBDD/701bfd96-d9ae-483a-a7ed-a29b0f7ffb29/scratchpad/figuras/06_correlaciones.png
+
+====================================================================================================
+11. CONTACTOS REALES RECALCULADOS — REFOLD (Boltz-2) top-100  (heavy-atom < 5.0 A)
+====================================================================================================
+n ficheros: 100
+       n_contactos  n_epitopo_contactado  recall_epitopo  precision_epitopo  min_dist_epitopo
+count      100.000                100.00         100.000            100.000           100.000
+mean        20.630                 12.62           0.789              0.618             2.224
+std          2.569                  1.78           0.111              0.096             0.306
+min         11.000                  9.00           0.562              0.450             1.378
+25%         19.000                 11.00           0.688              0.545             2.029
+50%         21.000                 12.50           0.781              0.604             2.250
+75%         22.000                 14.00           0.875              0.700             2.451
+90%         24.000                 15.00           0.938              0.750             2.597
+max         26.000                 16.00           1.000              0.818             2.839
+
+Diseños con >=1 residuo del epitopo en contacto real (<5.0 A): 100/100
+  >=  1/16 residuos del epitopo contactados: 100/100
+  >=  4/16 residuos del epitopo contactados: 100/100
+  >=  8/16 residuos del epitopo contactados: 100/100
+  >= 12/16 residuos del epitopo contactados:  69/100
+  >= 16/16 residuos del epitopo contactados:   4/100
+
+Precision (fraccion de la interfaz que cae DENTRO del epitopo pedido):
+  media 0.618  mediana 0.604  max 0.818
+  diseños con precision >=0.5: 93/100
+  diseños con precision ==0 (interfaz totalmente fuera del epitopo): 0/100
+
+Residuos de la diana mas contactados (local -> Spike, nº de diseños de 100):
+  152->S483:100*, 153->S484:100*, 162->S493:100*, 163->S494:100*, 154->S485:99*, 158->S489:99*, 159->S490:99*, 161->S492:99*, 118->S449:98, 155->S486:94*, 124->S455:90, 125->S456:82, 151->S482:80*, 121->S452:78, 157->S488:76*, 141->S472:61, 150->S481:60*, 115->S446:56, 139->S470:53, 149->S480:50*, 167->S498:46, 147->S478:46, 148->S479:45*, 156->S487:42*, 20->S351:41
+  (* = dentro del epitopo pedido Spike 479-494)
+
+====================================================================================================
+11. CONTACTOS REALES RECALCULADOS — GENERADO (pre-refold) top-100  (heavy-atom < 5.0 A)
+====================================================================================================
+n ficheros: 100
+       n_contactos  n_epitopo_contactado  recall_epitopo  precision_epitopo  min_dist_epitopo
+count      100.000               100.000         100.000            100.000           100.000
+mean        17.440                10.220           0.639              0.582             2.251
+std          1.945                 2.402           0.150              0.100             0.365
+min         13.000                 4.000           0.250              0.211             1.191
+25%         16.000                 8.000           0.500              0.500             2.014
+50%         18.000                11.000           0.688              0.611             2.290
+75%         19.000                12.000           0.750              0.667             2.510
+90%         20.000                13.000           0.812              0.700             2.720
+max         22.000                15.000           0.938              0.722             3.084
+
+Diseños con >=1 residuo del epitopo en contacto real (<5.0 A): 100/100
+  >=  1/16 residuos del epitopo contactados: 100/100
+  >=  4/16 residuos del epitopo contactados: 100/100
+  >=  8/16 residuos del epitopo contactados:  83/100
+  >= 12/16 residuos del epitopo contactados:  41/100
+  >= 16/16 residuos del epitopo contactados:   0/100
+
+Precision (fraccion de la interfaz que cae DENTRO del epitopo pedido):
+  media 0.582  mediana 0.611  max 0.722
+  diseños con precision >=0.5: 81/100
+  diseños con precision ==0 (interfaz totalmente fuera del epitopo): 0/100
+
+Residuos de la diana mas contactados (local -> Spike, nº de diseños de 100):
+  162->S493:100*, 122->S453:100, 161->S492:99*, 153->S484:99*, 152->S483:99*, 163->S494:98*, 121->S452:92, 159->S490:85*, 154->S485:78*, 155->S486:76*, 118->S449:72, 124->S455:62, 164->S495:54, 120->S451:53, 125->S456:51, 150->S481:48*, 18->S349:47, 151->S482:47*, 160->S491:47*, 123->S454:47, 149->S480:46*, 147->S478:45, 119->S450:43, 158->S489:40*, 148->S479:40*
+  (* = dentro del epitopo pedido Spike 479-494)
+
+NOTA: recall_epitopo = fraccion de los 16 residuos del epitopo pedido que quedan a <5 A
+de algun atomo pesado del binder. precision_epitopo = fraccion de TODOS los residuos de la
+diana contactados que pertenecen al epitopo pedido (mide si ataca SOLO donde se le pide).
+
+====================================================================================================
+12. CONTACTOS REALES — MUESTRA ALEATORIA DE 500 REFOLDS DE LA POBLACION COMPLETA
+====================================================================================================
+(muestreo aleatorio simple, semilla 0, sobre los 9.990 refold_cif; heavy-atom < 5 A)
+            nc       ne      rec     prec
+count  500.000  500.000  500.000  500.000
+mean    20.410    6.430    0.402    0.322
+std      4.537    4.137    0.259    0.218
+min      9.000    0.000    0.000    0.000
+5%      13.950    0.000    0.000    0.000
+25%     17.000    3.000    0.188    0.158
+50%     20.000    7.000    0.438    0.333
+75%     23.000    9.000    0.562    0.471
+95%     28.000   13.000    0.812    0.688
+max     35.000   16.000    1.000    0.933
+
+n = 500
+
+------------------------------------------------------------
+(continuacion seccion 12)
+  >=  1/16 residuos del epitopo contactados: 399/500 =  79.8%
+  >=  4/16 residuos del epitopo contactados: 371/500 =  74.2%
+  >=  8/16 residuos del epitopo contactados: 239/500 =  47.8%
+  >= 12/16 residuos del epitopo contactados:  40/500 =   8.0%
+  >= 16/16 residuos del epitopo contactados:   1/500 =   0.2%
+  0 residuos del epitopo contactados (falla total de sitio): 101/500 = 20.2%
+  precision >= 0.5 : 112/500 = 22.4%
+  precision == 0   : 101/500 = 20.2%
+  IC95% (Wilson) para >= 1/16 contactados: [76.1%, 83.1%]
+  IC95% (Wilson) para >= 8/16 contactados: [43.5%, 52.2%]
+  IC95% (Wilson) para >= 12/16 contactados: [5.9%, 10.7%]
+
+filas emparejadas con metricas: 500/500
+
+Contacto real de epitopo por scaffold (muestra de 500):
+                      n  ne_media  recall  precision  n_contactos
+scaffold                                                         
+7eow_caplacizumab   138     5.935   0.371      0.304       19.732
+7xl0_vobarilizumab  120     8.000   0.500      0.408       20.442
+8coh_gefurulimab    105     5.686   0.355      0.283       20.124
+8z8v_ozoralizumab   137     6.124   0.383      0.297       21.285
+
+Spearman bindsite_under_8rmsd (generado) vs recall real (refold): rho=0.101 (n=500)
+Spearman bb_rmsd vs recall real: rho=-0.671
+Spearman ipTM vs recall real:    rho=0.092
+
+Contacto real segun designabilidad (bb_rmsd<2.5):
+               n  ne_media  recall  precision
+bb_rmsd<2.5                                  
+False        477     6.136   0.384      0.307
+True          23    12.522   0.783      0.649
+
+COMPARACION CLAVE:
+  poblacion (muestra 500 refolds): recall medio 0.402  (6.43/16 residuos)
+  top-100 entregado (refold)      : recall medio 0.789  (12.62/16 residuos)
+  -> el filtro de BoltzGen, aun sin usar filter_bindingsite, enriquece de facto en fidelidad de epitopo
+     porque exige designabilidad (bb_rmsd<2.5), que correlaciona con mantener el sitio tras el refold.
+
+Figura: /tmp/claude-1000/-home-enzo-DiffSBDD/701bfd96-d9ae-483a-a7ed-a29b0f7ffb29/scratchpad/figuras/07_epitopo_real_refold.png
+
+====================================================================================================
+13. PROYECCIONES PARA EL DISEÑO DE LA CAMPAÑA PfCSP
+====================================================================================================
+13.1 Rendimiento observado si se hubiera usado UN SOLO scaffold (por 10.000 diseños):
+scaffold                n real  bb_rmsd<2.5    tasa  proy/10k  pose ok    tasa  proy/10k
+7eow_caplacizumab         2541           75   2.95%       295       13   0.51%        51
+7xl0_vobarilizumab        2533           47   1.86%       186       14   0.55%        55
+8coh_gefurulimab          2401           40   1.67%       167       10   0.42%        42
+8z8v_ozoralizumab         2513          286  11.38%      1138      134   5.33%       533
+MEZCLA REAL (4)           9988          448   4.49%       449      171   1.71%       171
+
+Ganancia de usar solo 8z8v/ozoralizumab frente a la mezcla de 4:
+  designabilidad: x2.54
+  pose correcta : x3.11
+  design_ptm>80 : x3.36
+
+13.2 Coste unitario medido y estimacion para PfCSP
+Medido RBD (complejo ~321 tokens: 197 diana + ~124 binder), 4x T4:
+  design : 116.24 s-GPU/diseño   folding : 166.99 s-GPU/diseño   total 286.15 s-GPU/diseño
+Piloto PfCSP (14-sep, 1 diseño, 1 GPU, INCLUYE carga de modelos -> sobreestima):
+  design 109.9 s, inverse_folding 13.3 s, folding 131.8 s, analysis 26.2 s, filtering 21.5 s
+Diana PfCSP: 7RXP cadena Axp, 65 residuos (dominio C-terminal alfa-TSR de CSP),
+  epitopo pedido 41..54 = GSANKPKDELDYAN (14 residuos).
+Complejo PfCSP ~ 65 + ~124 = ~189 tokens frente a ~321 de RBD.
+  escalado cuadratico (pairformer/difusion): (189/321)^2 = 0.347
+  estimacion conservadora del coste: entre 0.35x y 0.75x el de RBD
+    2500 diseños -> entre   17.2 h y   37.3 h de pared (0.7-1.6 dias) con 4 GPU
+    5000 diseños -> entre   34.4 h y   74.5 h de pared (1.4-3.1 dias) con 4 GPU
+   10000 diseños -> entre   68.9 h y  149.0 h de pared (2.9-6.2 dias) con 4 GPU
+
+  ADVERTENCIA: esto es una ESTIMACION por escalado, no una medida. El unico dato medido
+  de PfCSP es el piloto de 1 diseño, que no permite extrapolar en regimen estacionario.
+
+13.3 Estado actual del cluster (medido hoy):
+  4x Tesla T4 15360 MiB, todas al 0% de uso, sin procesos de computo -> libres ahora mismo.
+  Disco: pool "data" 41% CAP, 8.58T libres; /data 6.3T disponibles.
+  La campana RBD ocupa 5.1 G en run1 (4.0 G en intermediate_designs_inverse_folded).
+
+13.4 Que cambiaria yo en la configuracion de PfCSP (y por que):
+  a) filter_bindingsite=true  -> hoy esta en false; es gratis y garantiza que el top-N
+     entregado toque el epitopo pedido. En RBD no habria cambiado nada (100% pasa el
+     umbral de 8 A sobre la estructura generada), pero es una red de seguridad.
+  b) Reducir a 1-2 scaffolds (8z8v y 7xl0). 8z8v da x2.54 en designabilidad y x3.11 en
+     pose correcta; 7xl0 es el segundo mejor en bb_rmsd medio y en contacto real de epitopo.
+     7eow y 8coh consumen el 49% del computo y aportan el 5% del top-100.
+  c) Subir --budget de 100 a 300-500: el cuello no es el ranking, es que solo 407 de 9.988
+     pasan los filtros duros. Con budget 100 se tira informacion util.
+  d) Considerar --num_designs 5000 en vez de 10000: la curva de rendimiento es lineal,
+     no hay saturacion, pero con 5000 ya se obtiene un n suficiente para el eje 1.
+
+====================================================================================================
+14. SATURACION: rinde igual el diseño 9.000 que el 1.000?
+====================================================================================================
+              n  bb_rmsd_lt25  pose_ok   iptm  bindsite8  pass_filters
+dec                                                                   
+0-999      1000         4.900    2.200  0.166      0.744         4.300
+1000-1999  1000         5.400    2.300  0.168      0.745         4.900
+2000-2999  1000         4.400    1.200  0.166      0.744         3.800
+3000-3999  1000         4.900    2.400  0.169      0.745         4.600
+4000-4999  1000         4.800    1.800  0.168      0.750         4.400
+5000-5999   999         3.203    1.101  0.165      0.752         3.203
+6000-6999  1000         4.800    1.000  0.169      0.742         4.100
+7000-7999  1000         4.300    1.400  0.169      0.753         4.000
+8000-8999  1000         3.700    1.600  0.166      0.752         3.700
+9000-9999   988         4.453    2.126  0.172      0.754         3.745
+
+Interpretacion: las tasas son estables entre bloques de 1.000 -> NO hay saturacion ni deriva.
+El muestreo es i.i.d.; duplicar el numero de diseños duplica los hits (rendimiento lineal).
+
+Reparto de scaffold por bloque (comprobacion de que el muestreo es aleatorio, no por lotes):
+scaffold   7eow_caplacizumab  7xl0_vobarilizumab  8coh_gefurulimab  8z8v_ozoralizumab
+dec                                                                                  
+0-999                    267                 243               239                251
+1000-1999                247                 258               238                257
+2000-2999                264                 237               252                247
+3000-3999                247                 260               247                246
+4000-4999                254                 241               255                250
+5000-5999                258                 276               228                237
+6000-6999                268                 247               231                254
+7000-7999                215                 251               255                279
+8000-8999                249                 260               239                252
+9000-9999                272                 259               217                240
+
+Figura: /tmp/claude-1000/-home-enzo-DiffSBDD/701bfd96-d9ae-483a-a7ed-a29b0f7ffb29/scratchpad/figuras/08_saturacion.png
+
+====================================================================================================
+FIN DEL ANALISIS
+====================================================================================================

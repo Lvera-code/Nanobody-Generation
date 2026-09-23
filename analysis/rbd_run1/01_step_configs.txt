@@ -1,0 +1,331 @@
+===== config/design.yaml =====
+_target_: boltzgen.task.predict.predict.Predict
+data:
+  _target_: boltzgen.task.predict.data_from_yaml.FromYamlDataModule
+  cfg:
+    _target_: boltzgen.task.predict.data_from_yaml.DataConfig
+    tokenizer:
+      _target_: boltzgen.data.tokenize.tokenizer.Tokenizer
+      atomize_modified_residues: false
+    featurizer:
+      _target_: boltzgen.data.feature.featurizer.Featurizer
+    moldir: /home/esierra/.cache/huggingface/hub/datasets--boltzgen--inference-data/snapshots/c3d36fd276e9caf098c75d4113c6d5eb320b1a4c/mols.zip
+    yaml_path:
+    - design_spec.yaml
+    output_dir: ${output}
+    diffusion_samples: ${diffusion_samples}
+    backbone_only: false
+    atom14: true
+    atom37: false
+    disulfide_prob: 1.0
+    disulfide_on: true
+    skip_existing: true
+    multiplicity: 10000
+  batch_size: 1
+  num_workers: 1
+  pin_memory: true
+writer:
+  _target_: boltzgen.task.predict.writer.DesignWriter
+  output_dir: ${output}
+  res_atoms_only: false
+  atom14: ${data.cfg.atom14}
+  atom37: ${data.cfg.atom37}
+  backbone_only: ${data.cfg.backbone_only}
+  write_native: false
+trainer:
+  accelerator: gpu
+  devices: 4
+  precision: bf16-mixed
+name: null
+output: run1/intermediate_designs
+checkpoint: /home/esierra/.cache/huggingface/hub/models--boltzgen--boltzgen-1/snapshots/c1be29e1f82ffcc72264f64b993c43fb4e0d17f0/boltzgen1_diverse.ckpt
+matmul_precision: high
+recycling_steps: 3
+sampling_steps: 500
+diffusion_samples: 1
+compile_pairformer: false
+compile_structure: false
+override:
+  masker_args:
+    mask: true
+    mask_backbone: false
+  validators: null
+  step_scale_schedule:
+  - step_scale: 1.8
+    period: 0.25
+  - step_scale: 2.0
+    period: 0.25
+  - step_scale: 1.8
+    period: 0.25
+  - step_scale: 2.0
+    period: 0.25
+  noise_scale_schedule:
+  - noise_scale: 0.95
+    period: 0.25
+  - noise_scale: 0.88
+    period: 0.25
+  - noise_scale: 0.95
+    period: 0.25
+  - noise_scale: 0.88
+    period: 0.25
+  diffusion_process_args:
+    sigma_min: 0.0004
+    sigma_max: 160.0
+    sigma_data: 16.0
+    rho: 7
+    P_mean: -1.2
+    P_std: 1.5
+    gamma_0: 0.8
+    gamma_min: 1.0
+    noise_scale: null
+    step_scale: null
+    mse_rotational_alignment: true
+    coordinate_augmentation: true
+    alignment_reverse_diff: true
+    synchronize_sigmas: false
+    sampling_schedule: dilated
+    time_dilation: 2.667
+    time_dilation_start: 0.6
+    time_dilation_end: 0.8
+  use_kernels: false
+  checkpoints:
+    first_checkpoint_num_samples: 0.5
+    checkpoint_list:
+    - checkpoint:
+        num_samples: 0.5
+        path: /home/esierra/.cache/huggingface/hub/models--boltzgen--boltzgen-1/snapshots/c1be29e1f82ffcc72264f64b993c43fb4e0d17f0/boltzgen1_adherence.ckpt
+
+===== config/inverse_folding.yaml =====
+_target_: boltzgen.task.predict.predict.Predict
+data:
+  _target_: boltzgen.task.predict.data_from_generated.FromGeneratedDataModule
+  cfg:
+    _target_: boltzgen.task.predict.data_from_generated.DataConfig
+    tokenizer:
+      _target_: boltzgen.data.tokenize.tokenizer.Tokenizer
+      atomize_modified_residues: false
+    featurizer:
+      _target_: boltzgen.data.feature.featurizer.Featurizer
+    suffix: .cif
+    suffix_metadata: .npz
+    suffix_native: _native.cif
+    moldir: /home/esierra/.cache/huggingface/hub/datasets--boltzgen--inference-data/snapshots/c3d36fd276e9caf098c75d4113c6d5eb320b1a4c/mols.zip
+    samples_per_target: 1000000000
+    design: true
+    backbone_only: true
+    atom14: false
+    max_seqs: 1
+    inverse_fold: true
+    batch_size: 1
+    num_workers: 1
+    pin_memory: true
+    num_targets: 1000000000
+    design_mask_override: null
+    multiplicity: 1
+  fail_if_no_designs: true
+  design_dir: run1/intermediate_designs
+  output_dir: ${output}
+  skip_existing: true
+  skip_existing_kind: inverse_fold
+writer:
+  _target_: boltzgen.task.predict.writer.DesignWriter
+  output_dir: ${output}
+  res_atoms_only: false
+  atom14: ${data.cfg.atom14}
+  inverse_fold: ${data.cfg.inverse_fold}
+  write_native: false
+trainer:
+  accelerator: gpu
+  devices: 4
+  precision: 32
+name: if_full
+output: run1/intermediate_designs_inverse_folded
+checkpoint: /home/esierra/.cache/huggingface/hub/models--boltzgen--boltzgen-1/snapshots/c1be29e1f82ffcc72264f64b993c43fb4e0d17f0/boltzgen1_ifold.ckpt
+matmul_precision: null
+recycling_steps: 3
+sampling_steps: 200
+diffusion_samples: 1
+override:
+  masker_args:
+    mask: true
+    mask_backbone: false
+  validators: null
+  diffusion_process_args:
+    sigma_min: 0.0004
+    sigma_max: 160.0
+    sigma_data: 16.0
+    rho: 7
+    P_mean: -1.2
+    P_std: 1.5
+    gamma_0: 0.8
+    gamma_min: 1.0
+    noise_scale: 1.0
+    step_scale: 1.0
+    mse_rotational_alignment: true
+    coordinate_augmentation: true
+    alignment_reverse_diff: true
+    synchronize_sigmas: false
+  inverse_fold_args:
+    atom_s: 128
+    atom_z: 16
+    token_s: 384
+    token_z: 128
+    node_dim: 128
+    pair_dim: 128
+    hidden_dim: 128
+    dropout: 0.1
+    softmax_dropout: 0.2
+    num_encoder_layers: 6
+    transformation_scale_factor: 1.0
+    inverse_fold_noise: 0.2
+    topk: 30
+    num_heads: 4
+    num_decoder_layers: 3
+    autoregressive: true
+    enable_input_embedder: true
+    inverse_fold_restriction:
+    - CYS
+  use_kernels: false
+
+===== config/folding.yaml =====
+_target_: boltzgen.task.predict.predict.Predict
+debug: false
+data:
+  _target_: boltzgen.task.predict.data_from_generated.FromGeneratedDataModule
+  cfg:
+    _target_: boltzgen.task.predict.data_from_generated.DataConfig
+    tokenizer:
+      _target_: boltzgen.data.tokenize.tokenizer.Tokenizer
+      atomize_modified_residues: false
+    featurizer:
+      _target_: boltzgen.data.feature.featurizer.Featurizer
+    suffix: .cif
+    suffix_metadata: .npz
+    suffix_native: _native.cif
+    samples_per_target: 1000000000000000
+    num_targets: 10000000000000
+    moldir: /home/esierra/.cache/huggingface/hub/datasets--boltzgen--inference-data/snapshots/c3d36fd276e9caf098c75d4113c6d5eb320b1a4c/mols.zip
+    batch_size: 1
+    num_workers: 1
+    pin_memory: true
+    disulfide_prob: 1.0
+    disulfide_on: true
+  design_dir: run1/intermediate_designs_inverse_folded
+  target_templates: true
+  return_native: false
+  fail_if_no_designs: true
+  output_dir: null
+  skip_existing: true
+  skip_existing_kind: folded
+keys_dict_out:
+- min_interaction_pae
+- min_design_to_target_pae
+- interaction_pae
+- ligand_iptm
+- protein_iptm
+- iptm
+- design_iptm
+- design_iiptm
+- design_to_target_iptm
+- design_residue_iptm
+- design_ptm
+- target_ptm
+- ptm
+writer:
+  _target_: boltzgen.task.predict.writer.FoldingWriter
+  design_dir: ${data.design_dir}
+trainer:
+  accelerator: gpu
+  logger: false
+  devices: 4
+  precision: bf16-mixed
+name: null
+output: run1/intermediate_designs_inverse_folded
+checkpoint: /home/esierra/.cache/huggingface/hub/models--boltzgen--boltzgen-1/snapshots/c1be29e1f82ffcc72264f64b993c43fb4e0d17f0/boltz2_conf_final.ckpt
+matmul_precision: null
+recycling_steps: 3
+sampling_steps: 200
+diffusion_samples: 5
+override:
+  validators: null
+  use_kernels: false
+
+===== config/analysis.yaml =====
+_target_: boltzgen.task.analyze.analyze.Analyze
+name: analyze
+design_dir: run1/intermediate_designs_inverse_folded
+debug: false
+num_processes: 32
+affinity_metrics: false
+backbone_fold_metrics: true
+noncovalents_original: false
+noncovalents_refolded: true
+delta_sasa_original: false
+delta_sasa_refolded: true
+largest_hydrophobic: false
+largest_hydrophobic_refolded: false
+run_clustering: false
+liability_analysis: true
+liability_modality: peptide
+liability_peptide_type: linear
+diversity_original: false
+diversity_refolded: false
+diversity_per_target_original: false
+diversity_per_target_refolded: false
+novelty_original: false
+novelty_refolded: false
+novelty_per_target_original: false
+novelty_per_target_refolded: false
+ss_conditioning_metrics: false
+sequence_recovery: false
+native: false
+compute_lddts: false
+data:
+  _target_: boltzgen.task.predict.data_from_generated.FromGeneratedDataModule
+  cfg:
+    _target_: boltzgen.task.predict.data_from_generated.DataConfig
+    tokenizer:
+      _target_: boltzgen.data.tokenize.tokenizer.Tokenizer
+      atomize_modified_residues: false
+    featurizer:
+      _target_: boltzgen.data.feature.featurizer.Featurizer
+    suffix: .cif
+    suffix_metadata: .npz
+    suffix_native: _native.cif
+    samples_per_target: 1000000000000000
+    num_targets: 10000000000000
+    moldir: /home/esierra/.cache/huggingface/hub/datasets--boltzgen--inference-data/snapshots/c3d36fd276e9caf098c75d4113c6d5eb320b1a4c/mols.zip
+    batch_size: 1
+    num_workers: 4
+    pin_memory: true
+    disulfide_prob: 1.0
+    disulfide_on: true
+  design_dir: ${design_dir}
+  target_templates: false
+  return_native: ${native}
+  fail_if_no_designs: true
+  skip_existing: true
+  skip_existing_kind: analyzed
+designfolding_metrics: false
+allatom_fold_metrics: false
+
+===== config/filtering.yaml =====
+_target_: boltzgen.task.filter.filter.Filter
+budget: 100
+top_budget: 10
+use_affinity: false
+filter_cysteine: true
+from_inverse_folded: true
+filter_bindingsite: false
+modality: peptide
+peptide_type: linear
+alpha: 0.001
+random_state: 0
+metrics_override: null
+num_liability_plots: 0
+plot_seq_logos: false
+design_dir: run1/intermediate_designs_inverse_folded
+outdir: run1
+filter_designfolding: false
+filter_biased: true
+

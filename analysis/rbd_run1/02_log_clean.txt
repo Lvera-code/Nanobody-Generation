@@ -1,0 +1,407 @@
+=== RBD campaign start mar 15 sep 2026 12:38:29 CEST ===
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Initializing distributed: GLOBAL_RANK: 0, MEMBER: 1/4
+Initializing distributed: GLOBAL_RANK: 3, MEMBER: 4/4
+Initializing distributed: GLOBAL_RANK: 2, MEMBER: 3/4
+Initializing distributed: GLOBAL_RANK: 1, MEMBER: 2/4
+Removing leading and/or trailing unresolved residues from included part of chain A in /data/esierra/proyecto3-boltzgen/rbd_campaign/7xl0.cif.
+  Leading unresolved:  
+  Trailing unresolved: ALA,ALA,ALA,HIS,HIS,HIS,HIS,HIS,HIS
+Removing leading and/or trailing unresolved residues from included part of chain B in /data/esierra/proyecto3-boltzgen/rbd_campaign/8z8v.cif.
+  Leading unresolved:  
+  Trailing unresolved: THR,SER,HIS,HIS,HIS,HIS,HIS,HIS
+Removing leading and/or trailing unresolved residues from included part of chain B in /data/esierra/proyecto3-boltzgen/rbd_campaign/7eow.cif.
+  Leading unresolved:  MET
+  Trailing unresolved: LEU,GLU,HIS,HIS,HIS,HIS,HIS,HIS
+Number of failed examples: 0
+Number of failed examples: 0
+Number of failed examples: 0
+Initializing distributed: GLOBAL_RANK: 0, MEMBER: 1/4
+Initializing distributed: GLOBAL_RANK: 3, MEMBER: 4/4
+Initializing distributed: GLOBAL_RANK: 1, MEMBER: 2/4
+Initializing distributed: GLOBAL_RANK: 2, MEMBER: 3/4
+Initializing FromGeneratedDataModule datasets for run1/intermediate_designs
+[Info] Number of files to process (including already processed ones): 10000
+[Info] Skipped already inverse_fold IDs. Number of files after filtering: 10000
+Found 1 targets and 10000 remaining designs that still need to be processed in this step.
+Initializing FromGeneratedDataModule datasets for run1/intermediate_designs
+[Info] Number of files to process (including already processed ones): 10000
+[Info] Skipped already inverse_fold IDs. Number of files after filtering: 10000
+Found 1 targets and 10000 remaining designs that still need to be processed in this step.
+Initializing FromGeneratedDataModule datasets for run1/intermediate_designs
+[Info] Number of files to process (including already processed ones): 10000
+[Info] Skipped already inverse_fold IDs. Number of files after filtering: 10000
+Found 1 targets and 10000 remaining designs that still need to be processed in this step.
+Initializing FromGeneratedDataModule datasets for run1/intermediate_designs
+[Info] Number of files to process (including already processed ones): 10000
+[Info] Skipped already inverse_fold IDs. Number of files after filtering: 10000
+Found 1 targets and 10000 remaining designs that still need to be processed in this step.
+Number of failed examples: 0
+Number of failed examples: 0
+[rank2]:[W918 22:03:32.061945496 TCPStore.cpp:125] [c10d] recvValue failed on SocketImpl(fd=59, addr=[localhost]:43636, remote=[localhost]:55959): Failed to recv, got 0 bytes. Connection was likely closed. Did the remote server shutdown or crash?
+Exception raised from recvBytes at /pytorch/torch/csrc/distributed/c10d/Utils.hpp:682 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) + 0x9d (0x72109095905d in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libc10.so)
+frame #1: <unknown function> + 0x6a9149d (0x720fb79a549d in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libtorch_cpu.so)
+frame #2: c10d::TCPStore::check(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&) + 0x273 (0x720fb79a33f3 in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libtorch_cpu.so)
+frame #3: c10d::ProcessGroupNCCL::HeartbeatMonitor::runLoop() + 0x4a5 (0x720f7c73caa5 in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libtorch_cuda.so)
+frame #4: <unknown function> + 0xecdb4 (0x7210516ecdb4 in /lib/x86_64-linux-gnu/libstdc++.so.6)
+frame #5: <unknown function> + 0x9caa4 (0x72109229caa4 in /lib/x86_64-linux-gnu/libc.so.6)
+frame #6: <unknown function> + 0x129c3c (0x721092329c3c in /lib/x86_64-linux-gnu/libc.so.6)
+[rank2]:[W918 22:03:32.067332256 ProcessGroupNCCL.cpp:1826] [PG ID 0 PG GUID 0(default_pg) Rank 2] Failed to check the "should dump" flag on TCPStore, (maybe TCPStore server has shut down too early), with error: Failed to recv, got 0 bytes. Connection was likely closed. Did the remote server shutdown or crash?
+[rank2]:[W918 22:03:33.067546088 TCPStore.cpp:106] [c10d] sendBytes failed on SocketImpl(fd=59, addr=[localhost]:43636, remote=[localhost]:55959): Broken pipe
+Exception raised from sendBytes at /pytorch/torch/csrc/distributed/c10d/Utils.hpp:653 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) + 0x9d (0x72109095905d in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libc10.so)
+frame #1: <unknown function> + 0x6a90911 (0x720fb79a4911 in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libtorch_cpu.so)
+frame #2: c10d::TCPStore::check(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&) + 0x24d (0x720fb79a33cd in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libtorch_cpu.so)
+frame #3: c10d::ProcessGroupNCCL::HeartbeatMonitor::runLoop() + 0x4a5 (0x720f7c73caa5 in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libtorch_cuda.so)
+frame #4: <unknown function> + 0xecdb4 (0x7210516ecdb4 in /lib/x86_64-linux-gnu/libstdc++.so.6)
+frame #5: <unknown function> + 0x9caa4 (0x72109229caa4 in /lib/x86_64-linux-gnu/libc.so.6)
+frame #6: <unknown function> + 0x129c3c (0x721092329c3c in /lib/x86_64-linux-gnu/libc.so.6)
+[rank2]:[W918 22:03:33.070290358 ProcessGroupNCCL.cpp:1826] [PG ID 0 PG GUID 0(default_pg) Rank 2] Failed to check the "should dump" flag on TCPStore, (maybe TCPStore server has shut down too early), with error: Broken pipe
+[rank2]:[W918 22:03:34.070473773 TCPStore.cpp:106] [c10d] sendBytes failed on SocketImpl(fd=59, addr=[localhost]:43636, remote=[localhost]:55959): Broken pipe
+Exception raised from sendBytes at /pytorch/torch/csrc/distributed/c10d/Utils.hpp:653 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) + 0x9d (0x72109095905d in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libc10.so)
+frame #1: <unknown function> + 0x6a90911 (0x720fb79a4911 in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libtorch_cpu.so)
+frame #2: c10d::TCPStore::check(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&) + 0x24d (0x720fb79a33cd in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libtorch_cpu.so)
+frame #3: c10d::ProcessGroupNCCL::HeartbeatMonitor::runLoop() + 0x4a5 (0x720f7c73caa5 in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libtorch_cuda.so)
+frame #4: <unknown function> + 0xecdb4 (0x7210516ecdb4 in /lib/x86_64-linux-gnu/libstdc++.so.6)
+frame #5: <unknown function> + 0x9caa4 (0x72109229caa4 in /lib/x86_64-linux-gnu/libc.so.6)
+frame #6: <unknown function> + 0x129c3c (0x721092329c3c in /lib/x86_64-linux-gnu/libc.so.6)
+[rank2]:[W918 22:03:34.073290155 ProcessGroupNCCL.cpp:1826] [PG ID 0 PG GUID 0(default_pg) Rank 2] Failed to check the "should dump" flag on TCPStore, (maybe TCPStore server has shut down too early), with error: Broken pipe
+[rank2]:[W918 22:03:35.073478513 TCPStore.cpp:106] [c10d] sendBytes failed on SocketImpl(fd=59, addr=[localhost]:43636, remote=[localhost]:55959): Broken pipe
+Exception raised from sendBytes at /pytorch/torch/csrc/distributed/c10d/Utils.hpp:653 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) + 0x9d (0x72109095905d in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libc10.so)
+frame #1: <unknown function> + 0x6a90911 (0x720fb79a4911 in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libtorch_cpu.so)
+frame #2: c10d::TCPStore::check(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&) + 0x24d (0x720fb79a33cd in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libtorch_cpu.so)
+frame #3: c10d::ProcessGroupNCCL::HeartbeatMonitor::runLoop() + 0x4a5 (0x720f7c73caa5 in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libtorch_cuda.so)
+frame #4: <unknown function> + 0xecdb4 (0x7210516ecdb4 in /lib/x86_64-linux-gnu/libstdc++.so.6)
+frame #5: <unknown function> + 0x9caa4 (0x72109229caa4 in /lib/x86_64-linux-gnu/libc.so.6)
+frame #6: <unknown function> + 0x129c3c (0x721092329c3c in /lib/x86_64-linux-gnu/libc.so.6)
+[rank2]:[W918 22:03:35.076296997 ProcessGroupNCCL.cpp:1826] [PG ID 0 PG GUID 0(default_pg) Rank 2] Failed to check the "should dump" flag on TCPStore, (maybe TCPStore server has shut down too early), with error: Broken pipe
+[rank2]:[W918 22:03:36.076489005 TCPStore.cpp:106] [c10d] sendBytes failed on SocketImpl(fd=59, addr=[localhost]:43636, remote=[localhost]:55959): Broken pipe
+Exception raised from sendBytes at /pytorch/torch/csrc/distributed/c10d/Utils.hpp:653 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) + 0x9d (0x72109095905d in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libc10.so)
+frame #1: <unknown function> + 0x6a90911 (0x720fb79a4911 in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libtorch_cpu.so)
+frame #2: c10d::TCPStore::check(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&) + 0x24d (0x720fb79a33cd in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libtorch_cpu.so)
+frame #3: c10d::ProcessGroupNCCL::HeartbeatMonitor::runLoop() + 0x4a5 (0x720f7c73caa5 in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libtorch_cuda.so)
+frame #4: <unknown function> + 0xecdb4 (0x7210516ecdb4 in /lib/x86_64-linux-gnu/libstdc++.so.6)
+frame #5: <unknown function> + 0x9caa4 (0x72109229caa4 in /lib/x86_64-linux-gnu/libc.so.6)
+frame #6: <unknown function> + 0x129c3c (0x721092329c3c in /lib/x86_64-linux-gnu/libc.so.6)
+[rank2]:[W918 22:03:36.079304373 ProcessGroupNCCL.cpp:1826] [PG ID 0 PG GUID 0(default_pg) Rank 2] Failed to check the "should dump" flag on TCPStore, (maybe TCPStore server has shut down too early), with error: Broken pipe
+[rank2]:[W918 22:03:37.079487340 TCPStore.cpp:106] [c10d] sendBytes failed on SocketImpl(fd=59, addr=[localhost]:43636, remote=[localhost]:55959): Broken pipe
+Exception raised from sendBytes at /pytorch/torch/csrc/distributed/c10d/Utils.hpp:653 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) + 0x9d (0x72109095905d in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libc10.so)
+frame #1: <unknown function> + 0x6a90911 (0x720fb79a4911 in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libtorch_cpu.so)
+frame #2: c10d::TCPStore::check(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&) + 0x24d (0x720fb79a33cd in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libtorch_cpu.so)
+frame #3: c10d::ProcessGroupNCCL::HeartbeatMonitor::runLoop() + 0x4a5 (0x720f7c73caa5 in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libtorch_cuda.so)
+frame #4: <unknown function> + 0xecdb4 (0x7210516ecdb4 in /lib/x86_64-linux-gnu/libstdc++.so.6)
+frame #5: <unknown function> + 0x9caa4 (0x72109229caa4 in /lib/x86_64-linux-gnu/libc.so.6)
+frame #6: <unknown function> + 0x129c3c (0x721092329c3c in /lib/x86_64-linux-gnu/libc.so.6)
+[rank2]:[W918 22:03:37.082254592 ProcessGroupNCCL.cpp:1826] [PG ID 0 PG GUID 0(default_pg) Rank 2] Failed to check the "should dump" flag on TCPStore, (maybe TCPStore server has shut down too early), with error: Broken pipe
+[rank2]:[W918 22:03:38.082432387 TCPStore.cpp:106] [c10d] sendBytes failed on SocketImpl(fd=59, addr=[localhost]:43636, remote=[localhost]:55959): Broken pipe
+Exception raised from sendBytes at /pytorch/torch/csrc/distributed/c10d/Utils.hpp:653 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) + 0x9d (0x72109095905d in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libc10.so)
+frame #1: <unknown function> + 0x6a90911 (0x720fb79a4911 in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libtorch_cpu.so)
+frame #2: c10d::TCPStore::check(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&) + 0x24d (0x720fb79a33cd in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libtorch_cpu.so)
+frame #3: c10d::ProcessGroupNCCL::HeartbeatMonitor::runLoop() + 0x4a5 (0x720f7c73caa5 in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libtorch_cuda.so)
+frame #4: <unknown function> + 0xecdb4 (0x7210516ecdb4 in /lib/x86_64-linux-gnu/libstdc++.so.6)
+frame #5: <unknown function> + 0x9caa4 (0x72109229caa4 in /lib/x86_64-linux-gnu/libc.so.6)
+frame #6: <unknown function> + 0x129c3c (0x721092329c3c in /lib/x86_64-linux-gnu/libc.so.6)
+[rank2]:[W918 22:03:38.085211863 ProcessGroupNCCL.cpp:1826] [PG ID 0 PG GUID 0(default_pg) Rank 2] Failed to check the "should dump" flag on TCPStore, (maybe TCPStore server has shut down too early), with error: Broken pipe
+[rank2]:[W918 22:03:39.085393293 TCPStore.cpp:106] [c10d] sendBytes failed on SocketImpl(fd=59, addr=[localhost]:43636, remote=[localhost]:55959): Broken pipe
+Exception raised from sendBytes at /pytorch/torch/csrc/distributed/c10d/Utils.hpp:653 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) + 0x9d (0x72109095905d in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libc10.so)
+frame #1: <unknown function> + 0x6a90911 (0x720fb79a4911 in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libtorch_cpu.so)
+frame #2: c10d::TCPStore::check(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&) + 0x24d (0x720fb79a33cd in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libtorch_cpu.so)
+frame #3: c10d::ProcessGroupNCCL::HeartbeatMonitor::runLoop() + 0x4a5 (0x720f7c73caa5 in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libtorch_cuda.so)
+frame #4: <unknown function> + 0xecdb4 (0x7210516ecdb4 in /lib/x86_64-linux-gnu/libstdc++.so.6)
+frame #5: <unknown function> + 0x9caa4 (0x72109229caa4 in /lib/x86_64-linux-gnu/libc.so.6)
+frame #6: <unknown function> + 0x129c3c (0x721092329c3c in /lib/x86_64-linux-gnu/libc.so.6)
+[rank2]:[W918 22:03:39.088177684 ProcessGroupNCCL.cpp:1826] [PG ID 0 PG GUID 0(default_pg) Rank 2] Failed to check the "should dump" flag on TCPStore, (maybe TCPStore server has shut down too early), with error: Broken pipe
+[rank2]:[W918 22:03:40.088364850 TCPStore.cpp:106] [c10d] sendBytes failed on SocketImpl(fd=59, addr=[localhost]:43636, remote=[localhost]:55959): Broken pipe
+Exception raised from sendBytes at /pytorch/torch/csrc/distributed/c10d/Utils.hpp:653 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) + 0x9d (0x72109095905d in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libc10.so)
+frame #1: <unknown function> + 0x6a90911 (0x720fb79a4911 in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libtorch_cpu.so)
+frame #2: c10d::TCPStore::check(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&) + 0x24d (0x720fb79a33cd in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libtorch_cpu.so)
+frame #3: c10d::ProcessGroupNCCL::HeartbeatMonitor::runLoop() + 0x4a5 (0x720f7c73caa5 in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libtorch_cuda.so)
+frame #4: <unknown function> + 0xecdb4 (0x7210516ecdb4 in /lib/x86_64-linux-gnu/libstdc++.so.6)
+frame #5: <unknown function> + 0x9caa4 (0x72109229caa4 in /lib/x86_64-linux-gnu/libc.so.6)
+frame #6: <unknown function> + 0x129c3c (0x721092329c3c in /lib/x86_64-linux-gnu/libc.so.6)
+[rank2]:[W918 22:03:40.091173868 ProcessGroupNCCL.cpp:1826] [PG ID 0 PG GUID 0(default_pg) Rank 2] Failed to check the "should dump" flag on TCPStore, (maybe TCPStore server has shut down too early), with error: Broken pipe
+[rank2]:[W918 22:03:41.091354814 TCPStore.cpp:106] [c10d] sendBytes failed on SocketImpl(fd=59, addr=[localhost]:43636, remote=[localhost]:55959): Broken pipe
+Exception raised from sendBytes at /pytorch/torch/csrc/distributed/c10d/Utils.hpp:653 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) + 0x9d (0x72109095905d in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libc10.so)
+frame #1: <unknown function> + 0x6a90911 (0x720fb79a4911 in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libtorch_cpu.so)
+frame #2: c10d::TCPStore::check(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&) + 0x24d (0x720fb79a33cd in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libtorch_cpu.so)
+frame #3: c10d::ProcessGroupNCCL::HeartbeatMonitor::runLoop() + 0x4a5 (0x720f7c73caa5 in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libtorch_cuda.so)
+frame #4: <unknown function> + 0xecdb4 (0x7210516ecdb4 in /lib/x86_64-linux-gnu/libstdc++.so.6)
+frame #5: <unknown function> + 0x9caa4 (0x72109229caa4 in /lib/x86_64-linux-gnu/libc.so.6)
+frame #6: <unknown function> + 0x129c3c (0x721092329c3c in /lib/x86_64-linux-gnu/libc.so.6)
+[rank2]:[W918 22:03:41.094132470 ProcessGroupNCCL.cpp:1826] [PG ID 0 PG GUID 0(default_pg) Rank 2] Failed to check the "should dump" flag on TCPStore, (maybe TCPStore server has shut down too early), with error: Broken pipe
+[rank2]:[W918 22:03:42.094313277 TCPStore.cpp:106] [c10d] sendBytes failed on SocketImpl(fd=59, addr=[localhost]:43636, remote=[localhost]:55959): Broken pipe
+Exception raised from sendBytes at /pytorch/torch/csrc/distributed/c10d/Utils.hpp:653 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) + 0x9d (0x72109095905d in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libc10.so)
+frame #1: <unknown function> + 0x6a90911 (0x720fb79a4911 in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libtorch_cpu.so)
+frame #2: c10d::TCPStore::check(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&) + 0x24d (0x720fb79a33cd in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libtorch_cpu.so)
+frame #3: c10d::ProcessGroupNCCL::HeartbeatMonitor::runLoop() + 0x4a5 (0x720f7c73caa5 in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libtorch_cuda.so)
+frame #4: <unknown function> + 0xecdb4 (0x7210516ecdb4 in /lib/x86_64-linux-gnu/libstdc++.so.6)
+frame #5: <unknown function> + 0x9caa4 (0x72109229caa4 in /lib/x86_64-linux-gnu/libc.so.6)
+frame #6: <unknown function> + 0x129c3c (0x721092329c3c in /lib/x86_64-linux-gnu/libc.so.6)
+[rank2]:[W918 22:03:42.097108826 ProcessGroupNCCL.cpp:1826] [PG ID 0 PG GUID 0(default_pg) Rank 2] Failed to check the "should dump" flag on TCPStore, (maybe TCPStore server has shut down too early), with error: Broken pipe
+[rank2]:[W918 22:03:43.097300740 TCPStore.cpp:106] [c10d] sendBytes failed on SocketImpl(fd=59, addr=[localhost]:43636, remote=[localhost]:55959): Broken pipe
+Exception raised from sendBytes at /pytorch/torch/csrc/distributed/c10d/Utils.hpp:653 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) + 0x9d (0x72109095905d in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libc10.so)
+frame #1: <unknown function> + 0x6a90911 (0x720fb79a4911 in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libtorch_cpu.so)
+frame #2: c10d::TCPStore::check(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&) + 0x24d (0x720fb79a33cd in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libtorch_cpu.so)
+frame #3: c10d::ProcessGroupNCCL::HeartbeatMonitor::runLoop() + 0x4a5 (0x720f7c73caa5 in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libtorch_cuda.so)
+frame #4: <unknown function> + 0xecdb4 (0x7210516ecdb4 in /lib/x86_64-linux-gnu/libstdc++.so.6)
+frame #5: <unknown function> + 0x9caa4 (0x72109229caa4 in /lib/x86_64-linux-gnu/libc.so.6)
+frame #6: <unknown function> + 0x129c3c (0x721092329c3c in /lib/x86_64-linux-gnu/libc.so.6)
+[rank2]:[W918 22:03:43.100107506 ProcessGroupNCCL.cpp:1826] [PG ID 0 PG GUID 0(default_pg) Rank 2] Failed to check the "should dump" flag on TCPStore, (maybe TCPStore server has shut down too early), with error: Broken pipe
+[rank2]:[W918 22:03:44.100297737 TCPStore.cpp:106] [c10d] sendBytes failed on SocketImpl(fd=59, addr=[localhost]:43636, remote=[localhost]:55959): Broken pipe
+Exception raised from sendBytes at /pytorch/torch/csrc/distributed/c10d/Utils.hpp:653 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) + 0x9d (0x72109095905d in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libc10.so)
+frame #1: <unknown function> + 0x6a90911 (0x720fb79a4911 in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libtorch_cpu.so)
+frame #2: c10d::TCPStore::check(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&) + 0x24d (0x720fb79a33cd in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libtorch_cpu.so)
+frame #3: c10d::ProcessGroupNCCL::HeartbeatMonitor::runLoop() + 0x4a5 (0x720f7c73caa5 in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libtorch_cuda.so)
+frame #4: <unknown function> + 0xecdb4 (0x7210516ecdb4 in /lib/x86_64-linux-gnu/libstdc++.so.6)
+frame #5: <unknown function> + 0x9caa4 (0x72109229caa4 in /lib/x86_64-linux-gnu/libc.so.6)
+frame #6: <unknown function> + 0x129c3c (0x721092329c3c in /lib/x86_64-linux-gnu/libc.so.6)
+[rank2]:[W918 22:03:44.103097083 ProcessGroupNCCL.cpp:1826] [PG ID 0 PG GUID 0(default_pg) Rank 2] Failed to check the "should dump" flag on TCPStore, (maybe TCPStore server has shut down too early), with error: Broken pipe
+[rank2]:[W918 22:03:45.103269989 TCPStore.cpp:106] [c10d] sendBytes failed on SocketImpl(fd=59, addr=[localhost]:43636, remote=[localhost]:55959): Broken pipe
+Exception raised from sendBytes at /pytorch/torch/csrc/distributed/c10d/Utils.hpp:653 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) + 0x9d (0x72109095905d in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libc10.so)
+frame #1: <unknown function> + 0x6a90911 (0x720fb79a4911 in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libtorch_cpu.so)
+frame #2: c10d::TCPStore::check(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&) + 0x24d (0x720fb79a33cd in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libtorch_cpu.so)
+frame #3: c10d::ProcessGroupNCCL::HeartbeatMonitor::runLoop() + 0x4a5 (0x720f7c73caa5 in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libtorch_cuda.so)
+frame #4: <unknown function> + 0xecdb4 (0x7210516ecdb4 in /lib/x86_64-linux-gnu/libstdc++.so.6)
+frame #5: <unknown function> + 0x9caa4 (0x72109229caa4 in /lib/x86_64-linux-gnu/libc.so.6)
+frame #6: <unknown function> + 0x129c3c (0x721092329c3c in /lib/x86_64-linux-gnu/libc.so.6)
+[rank2]:[W918 22:03:45.106066031 ProcessGroupNCCL.cpp:1826] [PG ID 0 PG GUID 0(default_pg) Rank 2] Failed to check the "should dump" flag on TCPStore, (maybe TCPStore server has shut down too early), with error: Broken pipe
+[rank2]:[W918 22:03:46.106262231 TCPStore.cpp:106] [c10d] sendBytes failed on SocketImpl(fd=59, addr=[localhost]:43636, remote=[localhost]:55959): Broken pipe
+Exception raised from sendBytes at /pytorch/torch/csrc/distributed/c10d/Utils.hpp:653 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) + 0x9d (0x72109095905d in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libc10.so)
+frame #1: <unknown function> + 0x6a90911 (0x720fb79a4911 in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libtorch_cpu.so)
+frame #2: c10d::TCPStore::check(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&) + 0x24d (0x720fb79a33cd in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libtorch_cpu.so)
+frame #3: c10d::ProcessGroupNCCL::HeartbeatMonitor::runLoop() + 0x4a5 (0x720f7c73caa5 in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libtorch_cuda.so)
+frame #4: <unknown function> + 0xecdb4 (0x7210516ecdb4 in /lib/x86_64-linux-gnu/libstdc++.so.6)
+frame #5: <unknown function> + 0x9caa4 (0x72109229caa4 in /lib/x86_64-linux-gnu/libc.so.6)
+frame #6: <unknown function> + 0x129c3c (0x721092329c3c in /lib/x86_64-linux-gnu/libc.so.6)
+[rank2]:[W918 22:03:46.109268530 ProcessGroupNCCL.cpp:1826] [PG ID 0 PG GUID 0(default_pg) Rank 2] Failed to check the "should dump" flag on TCPStore, (maybe TCPStore server has shut down too early), with error: Broken pipe
+[rank2]:[W918 22:03:47.109460838 TCPStore.cpp:106] [c10d] sendBytes failed on SocketImpl(fd=59, addr=[localhost]:43636, remote=[localhost]:55959): Broken pipe
+Exception raised from sendBytes at /pytorch/torch/csrc/distributed/c10d/Utils.hpp:653 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) + 0x9d (0x72109095905d in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libc10.so)
+frame #1: <unknown function> + 0x6a90911 (0x720fb79a4911 in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libtorch_cpu.so)
+frame #2: c10d::TCPStore::check(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&) + 0x24d (0x720fb79a33cd in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libtorch_cpu.so)
+frame #3: c10d::ProcessGroupNCCL::HeartbeatMonitor::runLoop() + 0x4a5 (0x720f7c73caa5 in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libtorch_cuda.so)
+frame #4: <unknown function> + 0xecdb4 (0x7210516ecdb4 in /lib/x86_64-linux-gnu/libstdc++.so.6)
+frame #5: <unknown function> + 0x9caa4 (0x72109229caa4 in /lib/x86_64-linux-gnu/libc.so.6)
+frame #6: <unknown function> + 0x129c3c (0x721092329c3c in /lib/x86_64-linux-gnu/libc.so.6)
+[rank2]:[W918 22:03:47.112319632 ProcessGroupNCCL.cpp:1826] [PG ID 0 PG GUID 0(default_pg) Rank 2] Failed to check the "should dump" flag on TCPStore, (maybe TCPStore server has shut down too early), with error: Broken pipe
+[rank2]:[W918 22:03:48.112532086 TCPStore.cpp:106] [c10d] sendBytes failed on SocketImpl(fd=59, addr=[localhost]:43636, remote=[localhost]:55959): Broken pipe
+Exception raised from sendBytes at /pytorch/torch/csrc/distributed/c10d/Utils.hpp:653 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) + 0x9d (0x72109095905d in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libc10.so)
+frame #1: <unknown function> + 0x6a90911 (0x720fb79a4911 in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libtorch_cpu.so)
+frame #2: c10d::TCPStore::check(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&) + 0x24d (0x720fb79a33cd in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libtorch_cpu.so)
+frame #3: c10d::ProcessGroupNCCL::HeartbeatMonitor::runLoop() + 0x4a5 (0x720f7c73caa5 in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libtorch_cuda.so)
+frame #4: <unknown function> + 0xecdb4 (0x7210516ecdb4 in /lib/x86_64-linux-gnu/libstdc++.so.6)
+frame #5: <unknown function> + 0x9caa4 (0x72109229caa4 in /lib/x86_64-linux-gnu/libc.so.6)
+frame #6: <unknown function> + 0x129c3c (0x721092329c3c in /lib/x86_64-linux-gnu/libc.so.6)
+[rank2]:[W918 22:03:48.115626078 ProcessGroupNCCL.cpp:1826] [PG ID 0 PG GUID 0(default_pg) Rank 2] Failed to check the "should dump" flag on TCPStore, (maybe TCPStore server has shut down too early), with error: Broken pipe
+[rank2]:[W918 22:03:49.115805623 TCPStore.cpp:106] [c10d] sendBytes failed on SocketImpl(fd=59, addr=[localhost]:43636, remote=[localhost]:55959): Broken pipe
+Exception raised from sendBytes at /pytorch/torch/csrc/distributed/c10d/Utils.hpp:653 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) + 0x9d (0x72109095905d in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libc10.so)
+frame #1: <unknown function> + 0x6a90911 (0x720fb79a4911 in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libtorch_cpu.so)
+frame #2: c10d::TCPStore::check(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&) + 0x24d (0x720fb79a33cd in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libtorch_cpu.so)
+frame #3: c10d::ProcessGroupNCCL::HeartbeatMonitor::runLoop() + 0x4a5 (0x720f7c73caa5 in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libtorch_cuda.so)
+frame #4: <unknown function> + 0xecdb4 (0x7210516ecdb4 in /lib/x86_64-linux-gnu/libstdc++.so.6)
+frame #5: <unknown function> + 0x9caa4 (0x72109229caa4 in /lib/x86_64-linux-gnu/libc.so.6)
+frame #6: <unknown function> + 0x129c3c (0x721092329c3c in /lib/x86_64-linux-gnu/libc.so.6)
+[rank2]:[W918 22:03:49.118598318 ProcessGroupNCCL.cpp:1826] [PG ID 0 PG GUID 0(default_pg) Rank 2] Failed to check the "should dump" flag on TCPStore, (maybe TCPStore server has shut down too early), with error: Broken pipe
+[rank2]:[W918 22:03:50.118769055 TCPStore.cpp:106] [c10d] sendBytes failed on SocketImpl(fd=59, addr=[localhost]:43636, remote=[localhost]:55959): Broken pipe
+Exception raised from sendBytes at /pytorch/torch/csrc/distributed/c10d/Utils.hpp:653 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) + 0x9d (0x72109095905d in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libc10.so)
+frame #1: <unknown function> + 0x6a90911 (0x720fb79a4911 in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libtorch_cpu.so)
+frame #2: c10d::TCPStore::check(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&) + 0x24d (0x720fb79a33cd in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libtorch_cpu.so)
+frame #3: c10d::ProcessGroupNCCL::HeartbeatMonitor::runLoop() + 0x4a5 (0x720f7c73caa5 in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libtorch_cuda.so)
+frame #4: <unknown function> + 0xecdb4 (0x7210516ecdb4 in /lib/x86_64-linux-gnu/libstdc++.so.6)
+frame #5: <unknown function> + 0x9caa4 (0x72109229caa4 in /lib/x86_64-linux-gnu/libc.so.6)
+frame #6: <unknown function> + 0x129c3c (0x721092329c3c in /lib/x86_64-linux-gnu/libc.so.6)
+[rank2]:[W918 22:03:50.121563062 ProcessGroupNCCL.cpp:1826] [PG ID 0 PG GUID 0(default_pg) Rank 2] Failed to check the "should dump" flag on TCPStore, (maybe TCPStore server has shut down too early), with error: Broken pipe
+[rank2]:[W918 22:03:51.121743525 TCPStore.cpp:106] [c10d] sendBytes failed on SocketImpl(fd=59, addr=[localhost]:43636, remote=[localhost]:55959): Broken pipe
+Exception raised from sendBytes at /pytorch/torch/csrc/distributed/c10d/Utils.hpp:653 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) + 0x9d (0x72109095905d in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libc10.so)
+frame #1: <unknown function> + 0x6a90911 (0x720fb79a4911 in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libtorch_cpu.so)
+frame #2: c10d::TCPStore::check(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&) + 0x24d (0x720fb79a33cd in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libtorch_cpu.so)
+frame #3: c10d::ProcessGroupNCCL::HeartbeatMonitor::runLoop() + 0x4a5 (0x720f7c73caa5 in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libtorch_cuda.so)
+frame #4: <unknown function> + 0xecdb4 (0x7210516ecdb4 in /lib/x86_64-linux-gnu/libstdc++.so.6)
+frame #5: <unknown function> + 0x9caa4 (0x72109229caa4 in /lib/x86_64-linux-gnu/libc.so.6)
+frame #6: <unknown function> + 0x129c3c (0x721092329c3c in /lib/x86_64-linux-gnu/libc.so.6)
+[rank2]:[W918 22:03:51.124528052 ProcessGroupNCCL.cpp:1826] [PG ID 0 PG GUID 0(default_pg) Rank 2] Failed to check the "should dump" flag on TCPStore, (maybe TCPStore server has shut down too early), with error: Broken pipe
+[rank2]:[W918 22:03:52.124697316 TCPStore.cpp:106] [c10d] sendBytes failed on SocketImpl(fd=59, addr=[localhost]:43636, remote=[localhost]:55959): Broken pipe
+Exception raised from sendBytes at /pytorch/torch/csrc/distributed/c10d/Utils.hpp:653 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) + 0x9d (0x72109095905d in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libc10.so)
+frame #1: <unknown function> + 0x6a90911 (0x720fb79a4911 in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libtorch_cpu.so)
+frame #2: c10d::TCPStore::check(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&) + 0x24d (0x720fb79a33cd in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libtorch_cpu.so)
+frame #3: c10d::ProcessGroupNCCL::HeartbeatMonitor::runLoop() + 0x4a5 (0x720f7c73caa5 in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libtorch_cuda.so)
+frame #4: <unknown function> + 0xecdb4 (0x7210516ecdb4 in /lib/x86_64-linux-gnu/libstdc++.so.6)
+frame #5: <unknown function> + 0x9caa4 (0x72109229caa4 in /lib/x86_64-linux-gnu/libc.so.6)
+frame #6: <unknown function> + 0x129c3c (0x721092329c3c in /lib/x86_64-linux-gnu/libc.so.6)
+[rank2]:[W918 22:03:52.127473101 ProcessGroupNCCL.cpp:1826] [PG ID 0 PG GUID 0(default_pg) Rank 2] Failed to check the "should dump" flag on TCPStore, (maybe TCPStore server has shut down too early), with error: Broken pipe
+[rank2]:[W918 22:03:53.127662078 TCPStore.cpp:106] [c10d] sendBytes failed on SocketImpl(fd=59, addr=[localhost]:43636, remote=[localhost]:55959): Broken pipe
+Exception raised from sendBytes at /pytorch/torch/csrc/distributed/c10d/Utils.hpp:653 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) + 0x9d (0x72109095905d in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libc10.so)
+frame #1: <unknown function> + 0x6a90911 (0x720fb79a4911 in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libtorch_cpu.so)
+frame #2: c10d::TCPStore::check(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&) + 0x24d (0x720fb79a33cd in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libtorch_cpu.so)
+frame #3: c10d::ProcessGroupNCCL::HeartbeatMonitor::runLoop() + 0x4a5 (0x720f7c73caa5 in /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/torch/lib/libtorch_cuda.so)
+frame #4: <unknown function> + 0xecdb4 (0x7210516ecdb4 in /lib/x86_64-linux-gnu/libstdc++.so.6)
+frame #5: <unknown function> + 0x9caa4 (0x72109229caa4 in /lib/x86_64-linux-gnu/libc.so.6)
+frame #6: <unknown function> + 0x129c3c (0x721092329c3c in /lib/x86_64-linux-gnu/libc.so.6)
+[rank2]:[W918 22:03:53.131204774 ProcessGroupNCCL.cpp:1826] [PG ID 0 PG GUID 0(default_pg) Rank 2] Failed to check the "should dump" flag on TCPStore, (maybe TCPStore server has shut down too early), with error: Broken pipe
+Number of failed examples: 0
+Initializing distributed: GLOBAL_RANK: 0, MEMBER: 1/4
+Initializing distributed: GLOBAL_RANK: 1, MEMBER: 2/4
+Initializing distributed: GLOBAL_RANK: 2, MEMBER: 3/4
+Initializing distributed: GLOBAL_RANK: 3, MEMBER: 4/4
+Initializing FromGeneratedDataModule datasets for run1/intermediate_designs_inverse_folded
+[Info] Number of files to process (including already processed ones): 9986
+[Info] Skipped already folded IDs. Number of files after filtering: 9986
+Found 1 targets and 9986 remaining designs that still need to be processed in this step.
+Initializing FromGeneratedDataModule datasets for run1/intermediate_designs_inverse_folded
+[Info] Number of files to process (including already processed ones): 10000
+[Info] Skipped already folded IDs. Number of files after filtering: 10000
+Found 1 targets and 10000 remaining designs that still need to be processed in this step.
+Initializing FromGeneratedDataModule datasets for run1/intermediate_designs_inverse_folded
+[Info] Number of files to process (including already processed ones): 10000
+[Info] Skipped already folded IDs. Number of files after filtering: 10000
+Found 1 targets and 10000 remaining designs that still need to be processed in this step.
+Initializing FromGeneratedDataModule datasets for run1/intermediate_designs_inverse_folded
+[Info] Number of files to process (including already processed ones): 10000
+[Info] Skipped already folded IDs. Number of files after filtering: 10000
+Found 1 targets and 10000 remaining designs that still need to be processed in this step.
+Number of failed structure predictions: 0
+Number of failed structure predictions: 0
+Number of failed structure predictions: 0
+Initializing FromGeneratedDataModule datasets for run1/intermediate_designs_inverse_folded
+[Info] Number of files to process (including already processed ones): 10000
+[Info] Skipped already analyzed IDs. Number of files after filtering: 10000
+Found 1 targets and 10000 remaining designs that still need to be processed in this step.
+Folded path does not exist. Skipping: run1/intermediate_designs_inverse_folded/fold_out_npz/design_spec_9984.npz
+Folded path does not exist. Skipping: run1/intermediate_designs_inverse_folded/fold_out_npz/design_spec_9956.npz
+Folded path does not exist. Skipping: run1/intermediate_designs_inverse_folded/fold_out_npz/design_spec_9952.npz
+Folded path does not exist. Skipping: run1/intermediate_designs_inverse_folded/fold_out_npz/design_spec_9988.npz
+Folded path does not exist. Skipping: run1/intermediate_designs_inverse_folded/fold_out_npz/design_spec_9996.npz
+Folded path does not exist. Skipping: run1/intermediate_designs_inverse_folded/fold_out_npz/design_spec_9968.npz
+Folded path does not exist. Skipping: run1/intermediate_designs_inverse_folded/fold_out_npz/design_spec_9964.npz
+Folded path does not exist. Skipping: run1/intermediate_designs_inverse_folded/fold_out_npz/design_spec_9972.npz
+Folded path does not exist. Skipping: run1/intermediate_designs_inverse_folded/fold_out_npz/design_spec_9948.npz
+Computed metrics successfully for 9990 out of 10000.
+Number of targets: 1. Number of designs: 9990.
+Total number of designs:  9990
+Duplicates found: 2. Removing duplicates. 9988 designs remain.
+Num designs that pass the has_x filter with threshold 0 where lower is better: 9988
+Remaining designs: 9988
+Num designs that pass the filter_rmsd filter with threshold 2.5 where lower is better: 448
+Remaining designs: 448
+Num designs that pass the filter_rmsd_design filter with threshold 2.5 where lower is better: 7667
+Remaining designs: 420
+Num designs that pass the CYS_fraction filter with threshold 0 where lower is better: 9988
+Remaining designs: 420
+Num designs that pass the ALA_fraction filter with threshold 0.3 where lower is better: 9988
+Remaining designs: 420
+Num designs that pass the GLY_fraction filter with threshold 0.3 where lower is better: 9677
+Remaining designs: 407
+Num designs that pass the GLU_fraction filter with threshold 0.3 where lower is better: 9988
+Remaining designs: 407
+Num designs that pass the LEU_fraction filter with threshold 0.3 where lower is better: 9988
+Remaining designs: 407
+Num designs that pass the VAL_fraction filter with threshold 0.3 where lower is better: 9988
+Remaining designs: 407
+copy top design files: 0it [00:00, ?it/s]
+copy top design files: 10it [00:00, 757.55it/s]
+Files + CSV saved to run1/final_ranked_designs
+Writing design files is done. Now making plots for a final summary .pdf file with statistics.
+Making liability plots for top 0 sequences.: 0it [00:00, ?it/s]
+Making liability plots for top 0 sequences.: 0it [00:00, ?it/s]
+A description of metrics and summarizing plots was written to: run1/final_ranked_designs/results_overview.pdf
+=== Configuring pipeline ===
+Using dataset artifact: /home/esierra/.cache/huggingface/hub/datasets--boltzgen--inference-data/snapshots/c3d36fd276e9caf098c75d4113c6d5eb320b1a4c/mols.zip
+Creating output directory: run1
+************** Checking design spec: design_spec.yaml **************
+Removing leading and/or trailing unresolved residues from included part of chain B in /data/esierra/proyecto3-boltzgen/rbd_campaign/7eow.cif.
+  Leading unresolved:  MET
+  Trailing unresolved: LEU,GLU,HIS,HIS,HIS,HIS,HIS,HIS
+Total designed residues: 35
+There are 0 unresolved residues and 8 unresolved atoms in the target.
+Design specification visualization is written to run1/design_spec.cif
+********************************************************************
+Using kernels: False [device capability: (7, 5)]
+Config overrides for protocol nanobody-anything: {'analysis': ['largest_hydrophobic=false', 'largest_hydrophobic_refolded=false'], 'filtering': ['filter_cysteine=true']}
+Using 4 devices
+Raw designs will be saved to: run1/intermediate_designs
+Using diffusion batch size: 1
+Number of diffusion batches: 10000
+Using model artifact: /home/esierra/.cache/huggingface/hub/models--boltzgen--boltzgen-1/snapshots/c1be29e1f82ffcc72264f64b993c43fb4e0d17f0/boltzgen1_diverse.ckpt
+Using model artifact: /home/esierra/.cache/huggingface/hub/models--boltzgen--boltzgen-1/snapshots/c1be29e1f82ffcc72264f64b993c43fb4e0d17f0/boltzgen1_adherence.ckpt
+Inverse fold will avoid the following residues: ['CYS']
+Inverse-folded designs will be saved to: run1/intermediate_designs_inverse_folded
+Using model artifact: /home/esierra/.cache/huggingface/hub/models--boltzgen--boltzgen-1/snapshots/c1be29e1f82ffcc72264f64b993c43fb4e0d17f0/boltzgen1_ifold.ckpt
+Using model artifact: /home/esierra/.cache/huggingface/hub/models--boltzgen--boltzgen-1/snapshots/c1be29e1f82ffcc72264f64b993c43fb4e0d17f0/boltz2_conf_final.ckpt
+Final ranked designs will be saved to: run1/final_ranked_designs
+[1] design                   
+[2] inverse_folding          
+[3] folding                  
+[4] analysis                 
+[5] filtering                
+Configuration complete. Configs written to run1/config
+Steps manifest written to run1/steps.yaml
+=== Executing pipeline ===
+**************************************************
+Pipeline step 1 of 5: design
+Running command: /data/esierra/miniconda3/envs/boltzgen/bin/python3.12 /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/boltzgen/resources/main.py run1/config/design.yaml
+✓ Step design completed successfully in 290588.2s
+**************************************************
+Pipeline step 2 of 5: inverse_folding
+Running command: /data/esierra/miniconda3/envs/boltzgen/bin/python3.12 /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/boltzgen/resources/main.py run1/config/inverse_folding.yaml
+✓ Step inverse_folding completed successfully in 2509.3s
+**************************************************
+Pipeline step 3 of 5: folding
+Running command: /data/esierra/miniconda3/envs/boltzgen/bin/python3.12 /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/boltzgen/resources/main.py run1/config/folding.yaml
+✓ Step folding completed successfully in 417475.4s
+**************************************************
+Pipeline step 4 of 5: analysis
+Running command: /data/esierra/miniconda3/envs/boltzgen/bin/python3.12 /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/boltzgen/resources/main.py run1/config/analysis.yaml
+✓ Step analysis completed successfully in 4768.4s
+**************************************************
+Pipeline step 5 of 5: filtering
+Running command: /data/esierra/miniconda3/envs/boltzgen/bin/python3.12 /data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/boltzgen/resources/main.py run1/config/filtering.yaml
+✓ Step filtering completed successfully in 32.7s
+=== RBD campaign done rc=0 mié 23 sep 2026 19:21:31 CEST ===
+=== PfCSP campaign start mié 23 sep 2026 19:21:31 CEST ===
+=== Configuring pipeline ===
+Using dataset artifact: /home/esierra/.cache/huggingface/hub/datasets--boltzgen--inference-data/snapshots/c3d36fd276e9caf098c75d4113c6d5eb320b1a4c/mols.zip
+Creating output directory: run1
+************** Checking design spec: design_spec.yaml **************
+Traceback (most recent call last):
+  File "/data/esierra/miniconda3/envs/boltzgen/bin/boltzgen", line 6, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/boltzgen/cli/boltzgen.py", line 1737, in main
+    run_command(args)
+  File "/data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/boltzgen/cli/boltzgen.py", line 573, in run_command
+    configure_command(args)
+  File "/data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/boltzgen/cli/boltzgen.py", line 645, in configure_command
+    check_design_specs(args, moldir, mols)
+  File "/data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/boltzgen/cli/boltzgen.py", line 1252, in check_design_specs
+    check_design_spec(args, moldir, design_spec, mols)
+  File "/data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/boltzgen/cli/boltzgen.py", line 1287, in check_design_spec
+    parsed = parser.parse_yaml(design_spec, mols, moldir)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/esierra/miniconda3/envs/boltzgen/lib/python3.12/site-packages/boltzgen/data/parse/schema.py", line 1293, in parse_yaml
+    with path.open("r") as file:
+         ^^^^^^^^^^^^^^
+  File "/data/esierra/miniconda3/envs/boltzgen/lib/python3.12/pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'design_spec.yaml'
+=== PfCSP campaign done rc=1 mié 23 sep 2026 19:21:37 CEST ===
