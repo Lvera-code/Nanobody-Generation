@@ -1,38 +1,38 @@
-# Análisis de la campaña RBD (run1)
+# Analysis of the RBD campaign (run1)
 
-Productos del análisis de los 9.988 diseños de la campaña de RBD. Se guardan
-aquí porque no son reproducibles sin volver a ejecutar el análisis completo;
-las entradas pesadas sí lo son y no se versionan.
+Products of the analysis of the 9,988 designs of the RBD campaign. They are kept
+here because they are not reproducible without re-running the complete analysis;
+the heavy inputs are reproducible and are not versioned.
 
-## Contenido
+## Contents
 
-- `RESULTADOS.txt`: salida numérica completa del análisis.
-- `results_overview.pdf`: resumen visual.
-- `contactos_final_100_designs.csv` y `..._before_refolding.csv`: contactos de
-  átomos pesados a menos de 5 Å recalculados sobre los `.cif` del top-100,
-  antes y después del replegado.
-- `contactos_muestra_poblacion_500.csv`: lo mismo sobre una muestra aleatoria
-  de 500 diseños de la población (semilla 0).
-- `correlaciones_spearman.csv`: matriz de correlaciones entre métricas.
-- `02_log_clean.txt`, `01_step_configs.txt`, `00_config_dump.txt`:
-  configuración resuelta de los 5 pasos y log depurado de la corrida.
-- `figuras/`: 8 figuras del análisis.
-- `scripts/`: los scripts que generan todo lo anterior.
+- `RESULTADOS.txt`: the complete numerical output of the analysis.
+- `results_overview.pdf`: visual summary.
+- `contactos_final_100_designs.csv` and `..._before_refolding.csv`: heavy-atom
+  contacts closer than 5 Å recomputed over the top-100 `.cif` files,
+  before and after refolding.
+- `contactos_muestra_poblacion_500.csv`: the same over a random sample
+  of 500 designs from the population (seed 0).
+- `correlaciones_spearman.csv`: matrix of correlations between metrics.
+- `02_log_clean.txt`, `01_step_configs.txt`, `00_config_dump.txt`: the
+  resolved configuration of the 5 steps and the cleaned log of the run.
+- `figuras/`: 8 figures of the analysis.
+- `scripts/`: the scripts that generate all of the above.
 
-## Entradas no versionadas
+## Non-versioned inputs
 
-Los CSV de métricas (`all_designs_metrics.csv`, `aggregate_metrics_analyze.csv`,
-`final_designs_metrics_100.csv`, `per_target_metrics_analyze.csv`) y las
-estructuras del top-100 viven en la máquina de cómputo, bajo
-`rbd_campaign/run1/`. Suman unos 90 MB y se vuelven a descargar cuando hagan
-falta.
+The metrics CSVs (`all_designs_metrics.csv`, `aggregate_metrics_analyze.csv`,
+`final_designs_metrics_100.csv`, `per_target_metrics_analyze.csv`) and the
+top-100 structures live on the compute machine, under
+`rbd_campaign/run1/`. They add up to about 90 MB and are downloaded again when
+needed.
 
-## Avisos al reutilizar estos datos
+## Warnings when reusing these data
 
-- `bindsite_under_Xrmsd` no es un RMSD: es la fracción de residuos del epítopo
-  cuyo residuo diseñado más cercano queda por debajo de X Å centro a centro,
-  medida sobre la estructura generada. El umbral canónico es 8 Å.
-- `native_rmsd` y `native_rmsd_bb` valen 0,0 en las 9.988 filas porque la
-  campaña corrió con `native: false`. No son utilizables.
-- `per_target_metrics_analyze.csv` tiene una sola fila: la campaña tiene una
-  diana y cuatro andamios, no cuatro dianas.
+- `bindsite_under_Xrmsd` is not an RMSD: it is the fraction of epitope residues
+  whose nearest designed residue falls below X Å centre to centre,
+  measured over the generated structure. The canonical threshold is 8 Å.
+- `native_rmsd` and `native_rmsd_bb` are 0.0 in all 9,988 rows because the
+  campaign ran with `native: false`. They are not usable.
+- `per_target_metrics_analyze.csv` has a single row: the campaign has one
+  target and four scaffolds, not four targets.

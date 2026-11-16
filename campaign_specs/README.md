@@ -1,21 +1,21 @@
-# Especificaciones de campaña
+# Campaign specifications
 
-Entradas exactas con las que se lanzaron las campañas de diseño en la máquina
-de cómputo, guardadas aquí para que una campaña pueda repetirse sin depender
-del sistema de ficheros de esa máquina.
+The exact inputs with which the design campaigns were launched on the compute
+machine, kept here so that a campaign can be repeated without depending on
+that machine's file system.
 
 ## rbd/
 
-Campaña de nanocuerpos contra el RBD de SARS-CoV-2.
+Nanobody campaign against the SARS-CoV-2 RBD.
 
-- `7BEP_chainE_boltzgen_target.cif`: la diana tal y como la ingiere BoltzGen.
-  Cadena `Exp`, 197 residuos, numeración 1..197.
-- `design_spec.yaml`: especificación de diseño. La ventana de epítopo
-  `binding: 148..163` se refiere a esa numeración 1..197 y corresponde a los
-  residuos 479..494 de la proteína Spike (`PCNGVEGFNCYFPLQS`), el núcleo del
-  RBM que incluye E484, F486, Y489 y Q493.
+- `7BEP_chainE_boltzgen_target.cif`: the target exactly as BoltzGen ingests it.
+  Chain `Exp`, 197 residues, numbering 1..197.
+- `design_spec.yaml`: the design specification. The epitope window
+  `binding: 148..163` refers to that 1..197 numbering and corresponds to
+  residues 479..494 of the Spike protein (`PCNGVEGFNCYFPLQS`), the core of the
+  RBM that includes E484, F486, Y489 and Q493.
 
-Comando de lanzamiento:
+Launch command:
 
 ```
 boltzgen run --protocol nanobody-anything --output run1 --devices 4 \
@@ -23,25 +23,25 @@ boltzgen run --protocol nanobody-anything --output run1 --devices 4 \
              --budget 100 design_spec.yaml
 ```
 
-### Relación con `validation_panel/reference_targets/`
+### Relationship with `validation_panel/reference_targets/`
 
-`validation_panel/reference_targets/7BEP_chainE_boltzgen_target.cif` contiene
-**la misma estructura** (197 residuos, 1556 átomos, desviación máxima de
-coordenadas 0.0000 Å) pero con la cadena nombrada `E` y la numeración
-original de Spike (332..528). Esa variante sirve para comparar contra
-estructuras del PDB; la de `campaign_specs/rbd/` es la que consume
-`design_spec.yaml`. No son intercambiables: con la variante del panel, el
-`chain: id: Exp` no resuelve y la ventana `148..163` seleccionaría residuos
-distintos.
+`validation_panel/reference_targets/7BEP_chainE_boltzgen_target.cif` contains
+**the same structure** (197 residues, 1556 atoms, maximum coordinate
+deviation 0.0000 Å) but with the chain named `E` and Spike's original
+numbering (332..528). That variant serves to compare against
+PDB structures; the one in `campaign_specs/rbd/` is the one that
+`design_spec.yaml` consumes. They are not interchangeable: with the panel variant, the
+`chain: id: Exp` does not resolve and the `148..163` window would select
+different residues.
 
-### Procedencia de los andamios
+### Provenance of the scaffolds
 
-Las cuatro especificaciones de andamio de nanocuerpo (`7eow.yaml`,
-`7xl0.yaml`, `8coh.yaml`, `8z8v.yaml`) que referencia `design_spec.yaml` **no
-son artefactos de este proyecto**: son ficheros de ejemplo del propio BoltzGen,
-sin modificar. Viven en `boltzgen/example/nanobody_scaffolds/`, que este repo
-ignora a propósito (ver `.gitignore`) por ser un clon del repositorio ajeno.
+The four nanobody scaffold specifications (`7eow.yaml`,
+`7xl0.yaml`, `8coh.yaml`, `8z8v.yaml`) that `design_spec.yaml` references **are
+not artifacts of this project**: they are example files from BoltzGen itself,
+unmodified. They live in `boltzgen/example/nanobody_scaffolds/`, which this repo
+ignores on purpose (see `.gitignore`) because it is a clone of a third-party repository.
 
-Se reproducen clonando el fork en el commit `7ae564b`. Verificado: las copias
-locales son idénticas byte a byte a las que consumió la campaña en la máquina
-de cómputo, y `git status` sobre ese directorio está limpio respecto al fork.
+They are reproduced by cloning the fork at commit `7ae564b`. Verified: the
+local copies are byte-for-byte identical to the ones the campaign consumed on the
+compute machine, and `git status` over that directory is clean with respect to the fork.
