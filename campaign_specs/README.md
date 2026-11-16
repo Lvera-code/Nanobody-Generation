@@ -34,8 +34,14 @@ estructuras del PDB; la de `campaign_specs/rbd/` es la que consume
 `chain: id: Exp` no resuelve y la ventana `148..163` seleccionaría residuos
 distintos.
 
-### Pendiente
+### Procedencia de los andamios
 
 Las cuatro especificaciones de andamio de nanocuerpo (`7eow.yaml`,
-`7xl0.yaml`, `8coh.yaml`, `8z8v.yaml`) que referencia `design_spec.yaml`
-siguen existiendo solo en la máquina de cómputo.
+`7xl0.yaml`, `8coh.yaml`, `8z8v.yaml`) que referencia `design_spec.yaml` **no
+son artefactos de este proyecto**: son ficheros de ejemplo del propio BoltzGen,
+sin modificar. Viven en `boltzgen/example/nanobody_scaffolds/`, que este repo
+ignora a propósito (ver `.gitignore`) por ser un clon del repositorio ajeno.
+
+Se reproducen clonando el fork en el commit `7ae564b`. Verificado: las copias
+locales son idénticas byte a byte a las que consumió la campaña en la máquina
+de cómputo, y `git status` sobre ese directorio está limpio respecto al fork.
