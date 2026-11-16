@@ -1,6 +1,6 @@
 # Proyecto3-BoltzGen
 
-Third CNB project (commissioned by Carlos Oscar Sorzano): epitope-directed
+Third CNB project: epitope-directed
 de novo design of VHH (nanobodies), wrapping
 [BoltzGen](https://github.com/HannesStark/boltzgen) (`HannesStark/boltzgen`,
 MIT) as a Scipion plugin. Independent of

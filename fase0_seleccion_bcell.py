@@ -1,132 +1,201 @@
-"""Fase 0 de Proyecto 3 (BoltzGen): seleccion de candidatos B-cell, version corregida.
+"""Phase 0 of Project 3 (BoltzGen): B-cell candidate selection, corrected version.
 
-**Por que este archivo existe por separado y no modifica Project 1**: Project 1
-(``B-Cell-Epitope-Prediction``) es feature-complete y sus resultados ya
-alimentan un paper en escritura -- cualquier cambio de comportamiento en su
-``construct_assembly.py`` (no solo columnas nuevas sin consumidores, sino
-valores que YA aparecen en ``source_score_note``/metadata persistida) podria
-alterar numeros ya citados si el pipeline se vuelve a correr. Este modulo
-COPIA la logica de seleccion B-cell de ``_select_bcell_candidates`` (Fase 7
-de Project 1) y la corrige/enriquece aqui, sin tocar el original. Todo lo que
-NO se modifica se REUTILIZA por import directo de Project 1 (no se duplica)
-para no divergir en silencio si Project 1 corrige algo en esas partes.
+**Why this file exists separately instead of modifying Project 1**: Project 1
+(``B-Cell-Epitope-Prediction``) is feature-complete and its results already
+feed a paper in writing, so any behavioural change in its
+``construct_assembly.py`` (not only new columns without consumers, but
+values that ALREADY appear in ``source_score_note``/persisted metadata) could
+alter figures already cited if the pipeline were re-run. This module
+COPIES the B-cell selection logic of ``_select_bcell_candidates`` (Phase 7
+of Project 1) and corrects/enriches it here, without touching the original. Everything
+that is NOT modified is REUSED by direct import from Project 1 (not duplicated)
+so as not to diverge silently if Project 1 corrects something in those parts.
 
-Siete diferencias reales respecto al original (ver commit/sesion 2026-08-29):
+Seven real differences with respect to the original:
 
-1. **Bug de staleness en `allergen`/`glycosylated` para candidatos RECORTADOS**:
-   el `_trim_long_bcell_candidates` original de Project 1 recorta la
-   secuencia pero nunca re-corre AlgPred2/StackGlyEmbed sobre la ventana
-   final -- dejaba el veredicto de la region PADRE mas ancha. La version
-   `_trim_long_bcell_candidates_fresco` de aqui SI re-chequea, exactamente
-   igual que el padding ya hace en el original (mismo patron, solo se
-   extiende al caso que faltaba).
-2. **`documented_region`/nuevas columnas `bnab_*`/`iedb_*` calculadas sobre
-   la secuencia FINAL** (post pad/trim/self-tolerancia), no sobre la region
-   padre -- reusa los mismos matches de referencia ya encontrados por Fase
-   6/6c de Project 1 (``bnab_df``/``iedb_df``), re-verificando el
-   solapamiento real contra la ventana final con la misma funcion pura
-   (``_longest_common_substring_len``) que el motor original usa. Sin
-   lectura de disco nueva: el universo de epitopos de referencia posible es
-   el que ya vino en esos DataFrames.
-3. **Filtro duro por `tmbed_masked` (TM helix/strand, signal peptide,
-   intracellular)**: Project 1 solo anota esto (ADR 2026-08-13, un
-   constructo lineal no necesita descartar la region). Proyecto 3 SI la
-   descarta -- una region asi no es una diana de union fisicamente valida
-   para un nanobody contra el antigeno nativo plegado. Se relee
-   `{input_stem}_tmbed_regions.csv` fresco (ver `_load_tmbed_regions`) y se
-   recalcula el solapamiento contra la ventana FINAL (post pad/trim), en vez
-   de confiar en la columna `tmbed_masked` heredada de `safe_df`, que queda
-   obsoleta en cuanto Fase 7 recorta/extiende `start`/`end`.
-4. **Anotacion (no filtro) de accesibilidad real de superficie (RSA)**:
-   Project 1 retiene `rsa`/`pLDDT`/`alphafold_struc_flag` de DiscoTope-3.0
-   desde el 2026-08-29 (ADR en `discotope_engine.py`) pero se pierden al
-   colapsar a region en Fase 3 -- nunca llegan a `safe_df`. Aqui se releen
-   frescos del raw CSV cacheado y se exponen como `mean_rsa`/`mean_plddt`/
-   `alphafold_struc_flag` por candidata (ventana FINAL). NO es un filtro
-   duro como `tmbed_masked`: RSA es continuo y no hay umbral
-   "enterrado/expuesto" publicado por los autores de DiscoTope-3.0 (a
-   diferencia de `calibrated_score`), asi que fijar un corte aqui seria
-   fabricar una constante biologica sin fuente -- queda como criterio de
-   desempate explicito para quien arme el YAML final de BoltzGen.
+1. **Staleness bug in `allergen`/`glycosylated` for TRIMMED candidates**:
+   Project 1's original `_trim_long_bcell_candidates` trims the
+   sequence but never re-runs AlgPred2/StackGlyEmbed over the final
+   window, leaving the verdict of the wider PARENT region. The
+   `_trim_long_bcell_candidates_fresco` version here DOES re-check, exactly
+   as the padding already does in the original (the same pattern, merely
+   extended to the case that was missing).
+2. **`documented_region` and the new `bnab_*`/`iedb_*` columns computed over
+   the FINAL sequence** (post pad/trim/self-tolerance), not over the parent
+   region. It reuses the same reference matches already found by Phase
+   6/6c of Project 1 (``bnab_df``/``iedb_df``), re-verifying the
+   real overlap against the final window with the same pure function
+   (``_longest_common_substring_len``) that the original engine uses. Without
+   any new disk read: the universe of possible reference epitopes is
+   the one that already came in those DataFrames.
+3. **Hard filter by `tmbed_masked` (TM helix/strand, signal peptide,
+   intracellular)**: Project 1 only annotates this (ADR 2026-08-13, as a
+   linear construct does not need to discard the region). Project 3 DOES
+   discard it: such a region is not a physically valid binding target
+   for a nanobody against the native folded antigen. It re-reads
+   `{input_stem}_tmbed_regions.csv` fresh (see `_load_tmbed_regions`) and
+   recomputes the overlap against the FINAL window (post pad/trim), instead
+   of trusting the `tmbed_masked` column inherited from `safe_df`, which becomes
+   stale as soon as Phase 7 trims/extends `start`/`end`.
+4. **Annotation (not a filter) of real surface accessibility (RSA)**:
+   Project 1 retains `rsa`/`pLDDT`/`alphafold_struc_flag` from DiscoTope-3.0
+   since 2026-08-29 (the ADR in `discotope_engine.py`) but they are lost when
+   collapsing to a region in Phase 3, so they never reach `safe_df`. Here they are
+   re-read fresh from the cached raw CSV and exposed as `mean_rsa`/`mean_plddt`/
+   `alphafold_struc_flag` per candidate (the FINAL window). It is NOT a hard
+   filter like `tmbed_masked`: RSA is continuous and there is no published
+   "buried/exposed" threshold from DiscoTope-3.0's authors (unlike
+   `calibrated_score`), so fixing a cutoff here would amount to fabricating a
+   biological constant without a source. It is left as an explicit tie-break
+   criterion for whoever assembles the final BoltzGen YAML.
 
-5. **Anotacion (no filtro) de evidencia de VIA SECRETORA** (reuso cruzado
-   con PTM-Prediction, ver sesion 2026-08-29 "que falta enriquecer"):
-   `mean_rsa`/`alphafold_struc_flag` (diferencia 4) dicen si un residuo esta
-   expuesto DENTRO del plegamiento que se modelo, pero no dicen si el
-   antigeno completo es siquiera una diana de superficie plausible -- un
-   residuo con RSA alto en una proteina en realidad citoplasmatica/nuclear
-   no es una diana valida para un nanobody. `PTM-Prediction/src/structural/
-   uniprot_localization_client.py` ya resuelve exactamente esto (evidencia
-   real de UniProt, keywords tipo `Secreted`/`Signal`/`Cell membrane` o el
-   comentario `SUBCELLULAR LOCATION`), construido alli para N-glicosilacion
-   pero la senal es generica. Se carga por ruta de archivo (``importlib``,
-   ver `_load_uniprot_localization_client`) en vez de `import src...`
-   porque PTM-Prediction y Project 1 comparten nombre de paquete top-level
-   (`src`) -- un import normal del segundo repo pisaria el modulo `src` ya
-   registrado en `sys.modules` desde el primero. El `accession` de Project 1
-   es el stem completo del fichero de entrada (`HIV1_gp41_full_P04578_512-
-   856`), no un ID UniProt limpio -- se extrae con un regex (patron oficial
-   de UniProt, `_UNIPROT_ACCESSION_TOKEN_RE`) sobre los tokens separados por
-   `_`/`-`/`.` del stem; si ningun token calza el patron (comun cuando el
-   accession no viene de UniProt), la anotacion queda en ``None`` sin
-   fallar, mismo comportamiento no-fatal que en PTM-Prediction.
-6. **Anotacion (no filtro) de estructura CUATERNARIA/oligomerica** (Nivel A
-   de la robustez para targets arbitrarios, sesion 2026-08-29 -- este
-   pipeline se reusara tal cual para candidatos de la competicion Adaptyv,
-   no solo el panel GP120/MonkeyPox, asi que no puede depender de curacion
-   manual por target): el comentario ``SUBUNIT`` real de UniProt (texto
-   libre curado, p.ej. "consists of a homotrimer of non-covalently
-   associated gp120-gp41 heterodimers" para P04578) se expone tal cual en
-   ``quaternary_structure_note`` -- deliberadamente SIN parsearlo a un enum
-   monomero/dimero/trimero (fabricaria una regla de lenguaje natural sin
-   fuente verificada). Complementa a RSA/via secretora: ninguna de las dos
-   dice si la ventana elegida queda enterrada en una interfaz de
-   oligomerizacion real. El "Nivel B" (verificacion estructural real via la
-   API de ensamblajes de RCSB quando el Camino es PDB) se investigo la
-   misma sesion y es tecnicamente viable de forma generica
-   (``rcsb_struct_symmetry[].oligomeric_state``/``stoichiometry`` por
-   ``assembly_id``, verificado con datos reales: 4NCO/Env-SOSIP-trimer da
-   ``Hetero 12-mer``, stoichiometry ``A3/B3/C3/D3``; 1LYZ/lisozima-monomero
-   da ``Monomer``, ``A1``) pero exige mapear asym_id/entidad al chain
-   elegido como antigeno y solo cubre estructuras PDB depositadas (no
-   AlphaFold ni targets sin estructura resuelta) -- no implementado
-   todavia, decision pendiente de si se construye antes del scaffolding.
-7. **Anotacion (no filtro) de COPIAS REALES en el ensamblaje biologico**
-   (Nivel B, implementado misma sesion 2026-08-29 tras confirmar
-   viabilidad): ``assembly_copy_number``/``assembly_oligomeric_state``/
-   ``assembly_symmetry_kind`` (ver `_annotate_assembly_copy_number`) usan la
-   API de estructuras de RCSB para contar, de forma generica (cualquier PDB
-   ID, sin curacion manual), cuantas veces aparece la cadena elegida por
-   Fase 1.5 en el ensamblaje biologico real (``rcsb_struct_symmetry``).
-   Requiere resolver primero auth_asym_id -> label_asym_id: verificado con
-   datos reales que NO son arrays paralelos indexables (``7BEP``, entidad
-   con 2 cadenas: ``auth_asym_ids=['C','E']``/``asym_ids=['A','F']``, pero
-   el auth real de ``E`` es label ``'A'``, no ``'F'`` -- emparejar por
-   indice habria dado un resultado silenciosamente incorrecto, ver
-   ``_resolve_label_asym_id`` para el metodo correcto verificado, indexado
-   por instancia). Con la resolucion correcta, ``7BEP`` (RBD de SARS-CoV-2,
-   panel de Project 1) da ``copy_number=1`` -- coherente con que la RBD no
-   es un oligomero obligado por si misma. CAVEAT que sigue siendo real de
-   forma conceptual (no ligado a este caso concreto, ya corregido): el
-   "ensamblaje biologico" que RCSB expone como preferido puede en otras
-   entradas seguir incluyendo copias cristalograficas de un complejo
-   completo en vez de auto-oligomerizacion real -- por eso esta anotacion es
-   PURAMENTE INFORMATIVA y debe leerse junto al texto de UniProt del punto
-   6, nunca de forma aislada. Solo aplica a Camino PDB con ID real
-   extraible del stem (``_extract_pdb_id``); ``None`` para Camino FASTA,
-   AlphaFold, o targets de competicion sin estructura resuelta.
+5. **Annotation (not a filter) of SECRETORY PATHWAY evidence** (cross-reuse
+   with PTM-Prediction): `mean_rsa`/`alphafold_struc_flag` (difference 4) say
+   whether a residue is exposed WITHIN the fold that was modelled, but they do not
+   say whether the complete antigen is even a plausible surface target: a
+   residue with high RSA in a protein that is actually cytoplasmic/nuclear
+   is not a valid nanobody target. `PTM-Prediction/src/structural/
+   uniprot_localization_client.py` already resolves exactly this (real
+   UniProt evidence, keywords such as `Secreted`/`Signal`/`Cell membrane` or the
+   `SUBCELLULAR LOCATION` comment), built there for N-glycosylation
+   but the signal is generic. It is loaded by file path (``importlib``,
+   see `_load_uniprot_localization_client`) rather than `import src...`
+   because PTM-Prediction and Project 1 share the same top-level package name
+   (`src`), and a normal import of the second repo would shadow the `src` module
+   already registered in `sys.modules` from the first. Project 1's `accession`
+   is the complete stem of the input file (`HIV1_gp41_full_P04578_512-
+   856`), not a clean UniProt ID, so it is extracted with a regex (UniProt's
+   official pattern, `_UNIPROT_ACCESSION_TOKEN_RE`) over the tokens separated by
+   `_`/`-`/`.` of the stem; if no token matches the pattern (common when the
+   accession does not come from UniProt), the annotation is left as ``None`` without
+   failing, the same non-fatal behaviour as in PTM-Prediction.
+6. **Annotation (not a filter) of QUATERNARY/oligomeric structure** (Level A
+   of robustness for arbitrary targets: this pipeline will be reused as-is for
+   competition candidates, not only the GP120/MonkeyPox panel, so it cannot
+   depend on manual curation per target): UniProt's real ``SUBUNIT``
+   comment (curated free text, for example "consists of a homotrimer of non-covalently
+   associated gp120-gp41 heterodimers" for P04578) is exposed as-is in
+   ``quaternary_structure_note``, deliberately WITHOUT parsing it into a
+   monomer/dimer/trimer enum (which would fabricate a natural-language rule without a
+   verified source). It complements RSA/secretory pathway: neither of the two
+   says whether the chosen window ends up buried in a real
+   oligomerization interface. "Level B" (real structural verification via
+   the RCSB assemblies API when the path is PDB) was investigated in the
+   same session and is technically viable generically
+   (``rcsb_struct_symmetry[].oligomeric_state``/``stoichiometry`` per
+   ``assembly_id``, verified with real data: 4NCO/Env-SOSIP-trimer gives
+   ``Hetero 12-mer``, stoichiometry ``A3/B3/C3/D3``; 1LYZ/lysozyme-monomer
+   gives ``Monomer``, ``A1``) but it requires mapping asym_id/entity to the
+   chain chosen as the antigen and only covers deposited PDB structures (not
+   AlphaFold or targets without a resolved structure). Not implemented
+   yet, pending a decision on whether it is built before the scaffolding.
+7. **Annotation (not a filter) of REAL COPIES in the biological assembly**
+   (Level B, implemented in the same session after confirming
+   viability): ``assembly_copy_number``/``assembly_oligomeric_state``/
+   ``assembly_symmetry_kind`` (see `_annotate_assembly_copy_number`) use the
+   RCSB structures API to count, generically (any PDB
+   ID, without manual curation), how many times the chain chosen by
+   Phase 1.5 appears in the real biological assembly (``rcsb_struct_symmetry``).
+   It requires first resolving auth_asym_id -> label_asym_id: it was verified with
+   real data that they are NOT parallel indexable arrays (``7BEP``, an entity
+   with 2 chains: ``auth_asym_ids=['C','E']``/``asym_ids=['A','F']``, but
+   the real auth of ``E`` is label ``'A'``, not ``'F'``, so pairing by
+   index would have given a silently incorrect result; see
+   ``_resolve_label_asym_id`` for the correct verified method, indexed
+   per instance). With the correct resolution, ``7BEP`` (the SARS-CoV-2 RBD,
+   from Project 1's panel) gives ``copy_number=1``, which is consistent with the RBD not
+   being an obligate oligomer by itself. A CAVEAT that remains real
+   conceptually (not tied to this specific case, which is already corrected): the
+   "biological assembly" that RCSB exposes as preferred may, in other
+   entries, still include crystallographic copies of a complete complex rather than
+   real self-oligomerization, which is why this annotation is
+   PURELY INFORMATIVE and must be read together with the UniProt text of point
+   6, never in isolation. It only applies to the PDB path with a real ID
+   extractable from the stem (``_extract_pdb_id``); it is ``None`` for the FASTA path,
+   AlphaFold, or competition targets without a resolved structure.
 
-`conservation_pct` NO se corrige aqui (se deja igual que en Project 1,
-pre-recorte): arreglarlo de verdad exigiria correr BLASTp de nuevo contra el
-panel de conservacion, que Project 1 corre deliberadamente ANTES de su Fase
-7 para mantenerla "logica pura" -- ver ADR en `fase_6b_conservacion` de
-`pipeline.py`. Puede abordarse en una sesion futura si hace falta.
+`conservation_pct` is NOT corrected here (it is left as in Project 1,
+pre-trim): fixing it properly would require running BLASTp again against the
+conservation panel, which Project 1 deliberately runs BEFORE its Phase
+7 in order to keep it "pure logic"; see the ADR in `fase_6b_conservacion` of
+`pipeline.py`. It can be addressed in a future session if needed.
 
-Uso previsto: llamar a ``select_bcell_candidates_for_boltzgen`` con los
-mismos DataFrames que ya produce el pipeline de Project 1 hasta Fase 6c
-(``safe_df``, ``algpred_df``, ``stackgly_df``, y opcionalmente
-``bnab_df``/``iedb_df`` de sus Fases 6/6c) -- el resultado es el candidato
-final listo para construir el ``binding_types`` del YAML de BoltzGen.
+Updated 2026-09-07 after auditing the real changes introduced in
+Project 1 since 2026-08-29 (commits `e41f912`/`81550ff`/`0c9d605`,
+verified against the code, not from memory). Two findings are documented;
+the second requires an additional parameter in this function:
+
+1. **Incorporated without needing to modify this module**: Project 1
+   replaced the Phase 3 mechanism entirely (`e41f912`, 2026-09-06),
+   replacing the logical union of independent per-engine thresholds with a
+   continuous fusion of the normalized scores, with a threshold calibrated
+   by leave-one-out cross-validation (`src.engines.score_fusion`).
+   As a consequence, `safe_df` incorporates new columns that are preserved
+   intact through to this function's final result (verified by reviewing
+   `_pad_short_bcell_candidates`, `_trim_long_bcell_candidates_fresco` and
+   `filter_self_tolerant`: none of the three drops columns, they only
+   modify individual cells): `fused_score` (the sum of the normalized
+   scores of the active engines, computed before the trim or the
+   extension), `candidate_source` (with the values `'threshold'`, `'top_up'` or
+   `'reserve'`) and its boolean alias `fallback`. This last column
+   constitutes a relevant confidence signal for design with BoltzGen:
+   a value of `candidate_source` other than `'threshold'` indicates that the
+   window did not reach a real consensus between several engines above their
+   threshold for that antigen, but was instead generated as filler (the best
+   window available in the rest of the protein, or a reserve) so that
+   Phase 7 would not have fewer candidates than it can assemble. It is
+   recommended, in the event of a tie, to prioritize candidates with origin
+   `'threshold'` over those with origin `'top_up'` or `'reserve'` as a
+   nanobody target, following the same criterion already applied to the other
+   tie-break annotations of this module (RSA accessibility, conservation,
+   IEDB). It must be borne in mind, however, that `fused_score` and the
+   `{motor}_score` columns (one per active engine) are computed over the
+   original Phase 3 window, in the same way as `conservation_pct`, and
+   therefore are not updated after the trim or the extension performed in
+   this Phase 0 (the same limitation, already accepted and documented, that affects
+   conservation). The `conformational_coverage_pct` column, incorporated into
+   `_annotate_conformational_coverage` in Project 1 on 2026-08-27 (commit
+   `0c9d605`) with numerical values between 0 and 100, is likewise inherited without
+   changes, given that this function was already reused unmodified since
+   2026-08-29. It should be noted, without this constituting a defect of this
+   module, that the same Phase 3 rewrite changed the meaning of
+   the `origen` column on which `_annotate_conformational_coverage` relies:
+   previously it indicated which structural engine had exceeded its own
+   independent threshold in that specific region, whereas it is now
+   constant per accession and reflects only which engines were
+   active during the run, not which of them determined that particular
+   region. In practice this widens the number of candidates for
+   which conformational coverage is computed (to every accession with a
+   resolved structure on which DiscoTope-3.0 and/or ScanNet were run), which
+   constitutes a real change of scope in Project 1 that is not reflected
+   in its own documentation. That behaviour is not corrected in this
+   module, since it resides in Project 1's `_annotate_conformational_coverage`,
+   outside the scope of this fork (see the rule of not modifying Project 1
+   stated at the start of this docstring).
+2. **New optional parameter `conservation_native_core_map`**: on the same
+   date (`e41f912`, `conservation_engine.py`), Project 1 corrected a real
+   underestimation of conservation in B-cell candidates derived from
+   structures with a non-native crystallization or cloning tail. The verified
+   case corresponds to 4XAW (gp41, the MPER region): the value of
+   `conservation_pct` was reduced to 0.23% because of a tail of two or three
+   residues that never aligned in BLASTp, when the real native motif
+   presents a conservation of 60.09% in the reference panel. The
+   correction is exposed as `conservation_pct_native_core` in the report of
+   Project 1's Phase 6b (`run_conservation_filter(...,
+   detect_terminal_trim=True)`, activated only for the B-cell block).
+   This parameter is incorporated following the same pattern already established for
+   `conservation_map` (an external dictionary that translates each sequence to
+   its corresponding value, without needing to re-read any file, given
+   that the caller of this function already has Project 1's Phase 6b report),
+   and it is subject to the same limitation already documented for
+   `conservation_pct`: the value corresponds to the parent region and is not
+   updated after the trim or the extension performed in this Phase 0.
+
+Intended use: call ``select_bcell_candidates_for_boltzgen`` with the
+same DataFrames that Project 1's pipeline already produces through to Phase 6c
+(``safe_df``, ``algpred_df``, ``stackgly_df``, and optionally
+``bnab_df``/``iedb_df`` from its Phases 6/6c). The result is the final
+candidate, ready for building the ``binding_types`` of the BoltzGen YAML.
 """
 
 import importlib.util
